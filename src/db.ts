@@ -1,5 +1,6 @@
 import Dexie, { type EntityTable } from 'dexie';
 import { useLiveQuery } from 'dexie-react-hooks';
+import type { Species } from './data/species';
 
 export type Kind = 'animal' | 'plant' | 'rain';
 
@@ -35,6 +36,12 @@ export interface FieldRecord {
   note?: string;
   photoIds?: string[];
   moon?: string;
+  /** 'sound' when BirdNET identified the bird from its call. */
+  source?: 'sound';
+  /** BirdNET confidence, 0 to 1. */
+  confidence?: number;
+  /** The 3 second recording the identification was made from. */
+  clipId?: string;
   updatedAt: number;
 }
 
@@ -42,6 +49,16 @@ export interface PhotoRow {
   id: string;
   blob: Blob;
   at: number;
+}
+
+export type ClipRow = PhotoRow;
+
+/** A family member or staff member, with their avatar from the private family file. */
+export interface PersonRow {
+  name: string;
+  /** Round avatar image as a data URL. */
+  avatar?: string;
+  colour?: string;
 }
 
 export interface SettingRow {
@@ -53,6 +70,11 @@ class VeldboekDB extends Dexie {
   records!: EntityTable<FieldRecord, 'id'>;
   photos!: EntityTable<PhotoRow, 'id'>;
   settings!: EntityTable<SettingRow, 'key'>;
+  clips!: EntityTable<ClipRow, 'id'>;
+  /** Species added from bird sound identification, beyond the starter list. */
+  species!: EntityTable<Species, 'id'>;
+  /** Avatars; never part of the public code, loaded from the family file. */
+  people!: EntityTable<PersonRow, 'name'>;
 
   constructor() {
     super('veldboek');
@@ -60,6 +82,13 @@ class VeldboekDB extends Dexie {
       records: 'id, kind, at, speciesId, sessionId, camp',
       photos: 'id, at',
       settings: 'key',
+    });
+    this.version(2).stores({
+      clips: 'id, at',
+      species: 'id',
+    });
+    this.version(3).stores({
+      people: 'name',
     });
   }
 }
@@ -95,9 +124,10 @@ export async function saveRecords(records: FieldRecord[]): Promise<void> {
 }
 
 export async function deleteRecord(id: string): Promise<void> {
-  await db.transaction('rw', db.records, db.photos, async () => {
+  await db.transaction('rw', db.records, db.photos, db.clips, async () => {
     const record = await db.records.get(id);
     await db.records.delete(id);
+    if (record?.clipId) await db.clips.delete(record.clipId);
     if (!record?.photoIds?.length) return;
     // Photos can be shared by the records of one count; only delete those nothing else uses.
     const others = await db.records.filter((r) => r.photoIds?.some((p) => record.photoIds!.includes(p)) ?? false).toArray();

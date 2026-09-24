@@ -1,7 +1,8 @@
-import { useState, type CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
 import { FlowerMark } from '../components/FlowerMark';
+import { PersonAvatar } from '../components/PersonAvatar';
 import { RecordRow } from '../components/RecordRow';
 import { Empty } from '../components/ui';
 import type { IconName } from '../components/icons';
@@ -10,6 +11,7 @@ import { DEFAULT_PEOPLE, FARM } from '../data/farm';
 import { SEASONS, monthGuide } from '../data/seasons';
 import { getSpecies, usuallyFlowering, type Species } from '../data/species';
 import { formatLongDate, plural } from '../lib/format';
+import { install, isInstalled, isIPhone, useCanInstall } from '../lib/install';
 import { isSameMonth } from '../lib/records';
 import { href } from '../lib/router';
 import { countDraftTotal } from './Count';
@@ -20,6 +22,7 @@ const ACTIONS: { path: string; label: string; icon: IconName; colour: string; ti
   { path: 'count', label: 'Count', icon: 'binoculars', colour: '#A94A24', tint: '#F3E1D6' },
   { path: 'sighting', label: 'Sighting', icon: 'pin', colour: '#2D6A88', tint: '#DCEAF0' },
   { path: 'plant', label: 'Plant', icon: 'flower', colour: '#8E2A5E', tint: '#F1DCE7' },
+  { path: 'listen', label: 'Listen', icon: 'mic', colour: '#2D6A88', tint: '#DCEAF0' },
   { path: 'rain', label: 'Rain', icon: 'drop', colour: '#466178', tint: '#DFE6EC' },
 ];
 
@@ -50,62 +53,63 @@ function joinNames(names: string[]): string {
   return names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : (names[0] ?? '');
 }
 
-function WhoCard() {
+/** Faces of everyone on the list; tap your own to choose who records on this device. */
+export function WhoPicker({ current, onPick }: { current?: string; onPick: (name: string) => void }) {
   const people = useSetting<string[]>('people', DEFAULT_PEOPLE);
-  const [name, setName] = useState('');
-  async function choose(person: string) {
+  function choose(person: string) {
     const clean = person.trim();
-    if (!clean) return;
-    if (!people.includes(clean)) await setSetting('people', [...people, clean]);
-    await setSetting('recorder', clean);
+    if (clean) onPick(clean);
   }
   return (
-    <section className="card who">
-      <h2>Who is using this phone?</h2>
-      <p className="muted">Records show who made them. You can change this later in Settings.</p>
-      <div className="chips">
+    <div className="who__pick">
+      <div className="faces" role="group" aria-label="Who is recording">
         {people.map((p) => (
-          <button key={p} type="button" className="chip" onClick={() => choose(p)}>
-            {p}
+          <button key={p} type="button" className="faces__item" aria-pressed={current === p} onClick={() => choose(p)}>
+            <PersonAvatar name={p} size={60} active={current === p} />
+            <span>{p}</span>
           </button>
         ))}
       </div>
-      <form
-        className="who__form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          void choose(name);
-        }}
-      >
-        <input className="input" placeholder="Or type your name" aria-label="Your name" value={name} onChange={(e) => setName(e.target.value)} />
-        <button type="submit" className="btn btn--primary btn--small">
-          Save
-        </button>
-      </form>
+    </div>
+  );
+}
+
+function WhoCard() {
+  return (
+    <section className="card who">
+      <h2>Who is using this phone?</h2>
+      <p className="muted">Tap your face. Records show who made them, and you can change it later in Settings.</p>
+      <WhoPicker onPick={(name) => setSetting('recorder', name)} />
     </section>
   );
 }
 
-function isIosBrowser(): boolean {
-  const standalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as Navigator & { standalone?: boolean }).standalone === true;
-  return !standalone && /iPhone|iPad|iPod/.test(navigator.userAgent);
-}
-
 function InstallHint() {
   const dismissed = useSetting<boolean>('installHintDismissed', false);
-  if (dismissed || !isIosBrowser()) return null;
+  const canInstall = useCanInstall();
+  if (dismissed || isInstalled() || (!isIPhone() && !canInstall)) return null;
   return (
     <section className="card install">
-      <Icon name="share" size={26} />
+      <Icon name={canInstall ? 'download' : 'share'} size={26} />
       <div>
         <strong>Put Veldboek on your home screen</strong>
-        <span>
-          Tap <b>Share</b> at the bottom of Safari, then <b>Add to Home Screen</b>. It then opens like an app and keeps your records safe.
-        </span>
+        {canInstall ? (
+          <span>It then opens like an app, works without signal and keeps your records safe.</span>
+        ) : (
+          <span>
+            Tap <b>Share</b> at the bottom of Safari, then <b>Add to Home Screen</b>. It then opens like an app and keeps your records safe.
+          </span>
+        )}
       </div>
-      <button type="button" className="icon-btn" aria-label="Hide this tip" onClick={() => setSetting('installHintDismissed', true)}>
-        <Icon name="close" size={18} />
-      </button>
+      {canInstall ? (
+        <button type="button" className="btn btn--primary btn--small" onClick={() => void install()}>
+          Install
+        </button>
+      ) : (
+        <button type="button" className="icon-btn" aria-label="Hide this tip" onClick={() => setSetting('installHintDismissed', true)}>
+          <Icon name="close" size={18} />
+        </button>
+      )}
     </section>
   );
 }
@@ -139,9 +143,15 @@ export function Today() {
           <span className="eyebrow">{formatLongDate(now)}</span>
           <h1>{FARM.name}</h1>
         </div>
-        <a className="icon-btn" href={href('settings')} aria-label="Settings">
-          <Icon name="settings" size={20} />
-        </a>
+        {recorder ? (
+          <a className="today__me" href={href('settings')} aria-label={`Recording as ${recorder}. Open settings`}>
+            <PersonAvatar name={recorder} size={48} active />
+          </a>
+        ) : (
+          <a className="icon-btn" href={href('settings')} aria-label="Settings">
+            <Icon name="settings" size={20} />
+          </a>
+        )}
       </header>
 
       {!recorder && <WhoCard />}

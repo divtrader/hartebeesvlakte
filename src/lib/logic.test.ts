@@ -3,7 +3,9 @@ import { toCsv } from './csv';
 import { moonPhase } from './moon';
 import { countToRecords, rainByMonth, speciesSummary } from './records';
 import { formatDay, formatShortDate } from './format';
-import { SPECIES, matchesSearch, usuallyFlowering } from '../data/species';
+import { SPECIES, matchesSearch, speciesForBirdnet, usuallyFlowering } from '../data/species';
+import { birdnetWeek } from '../birdnet/protocol';
+import { encodeWav, resample } from './wav';
 import { monthGuide } from '../data/seasons';
 import type { FieldRecord } from '../db';
 
@@ -77,6 +79,34 @@ describe('species list', () => {
   it('knows what usually flowers in September', () => {
     expect(usuallyFlowering(9).map((s) => s.id)).toEqual(expect.arrayContaining(['karoo-gold', 'vygies', 'botterblom']));
     expect(monthGuide(9).season).toBe('Spring');
+  });
+});
+
+describe('bird sounds', () => {
+  it('uses BirdNET weeks of the year, four per month', () => {
+    expect(birdnetWeek(new Date(2026, 0, 1))).toBe(1);
+    expect(birdnetWeek(new Date(2026, 8, 24))).toBe(35);
+    expect(birdnetWeek(new Date(2026, 11, 31))).toBe(48);
+  });
+  it('writes a playable 16 bit WAV file', async () => {
+    const wav = encodeWav(new Float32Array([0, 0.5, -1, 1]), 48_000);
+    const bytes = new DataView(await wav.arrayBuffer());
+    expect(wav.size).toBe(44 + 8);
+    expect(String.fromCharCode(bytes.getUint8(0), bytes.getUint8(1), bytes.getUint8(2), bytes.getUint8(3))).toBe('RIFF');
+    expect(bytes.getUint32(24, true)).toBe(48_000);
+    expect(bytes.getInt16(48, true)).toBe(-32768);
+    expect(bytes.getInt16(50, true)).toBe(32767);
+  });
+  it('resamples to the requested length', () => {
+    const out = resample(new Float32Array([0, 1, 0, 1]), 44_100, 48_000, 5);
+    expect(out.length).toBe(5);
+    expect(out[0]).toBe(0);
+  });
+  it('maps BirdNET names to the species list, and adds new birds', () => {
+    expect(speciesForBirdnet('Anthropoides paradiseus', 'Blue Crane', 'Bloukraanvoël').id).toBe('blue-crane');
+    expect(speciesForBirdnet('Nectarinia famosa', 'Malachite Sunbird', 'Jangroentjie').id).toBe('malachite-sunbird');
+    const added = speciesForBirdnet('Cisticola subruficapilla', 'Grey-backed Cisticola', 'Grysrugtinktinkie');
+    expect(added).toMatchObject({ id: 'bn-cisticola-subruficapilla', group: 'birds' });
   });
 });
 

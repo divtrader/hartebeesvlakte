@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { ClipPlayer } from '../components/ClipPlayer';
 import { Icon } from '../components/Icon';
 import { PhotoRow } from '../components/PhotoStrip';
 import { RecordRow } from '../components/RecordRow';
@@ -79,9 +80,10 @@ export function Records() {
                       <Icon name="trash" size={18} />
                     </button>
                   </div>
-                  {(r.note || r.photoIds?.length) && (
+                  {(r.note || r.photoIds?.length || r.clipId) && (
                     <div className="record-line__extra">
                       {r.note && <p>{r.note}</p>}
+                      {r.clipId && <ClipPlayer id={r.clipId} />}
                       {r.photoIds?.length ? <PhotoRow ids={r.photoIds} /> : null}
                     </div>
                   )}

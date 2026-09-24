@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Icon } from '../components/Icon';
+import { PersonAvatar } from '../components/PersonAvatar';
 import { PlaceCard } from '../components/PlaceCard';
 import { PhotoStrip } from '../components/PhotoStrip';
 import { ActionBar, GroupAvatar, TopBar } from '../components/ui';
@@ -180,10 +181,13 @@ export function Count() {
         </div>
         <div className="total__side">
           <strong>{plural(species, 'species', 'species')}</strong>
-          <span>
-            Started {formatTime(draft.startedAt)}
-            {ctx.recorder ? ` · ${ctx.recorder}` : ''}
-          </span>
+          <span>Started {formatTime(draft.startedAt)}</span>
+          {ctx.recorder && (
+            <span className="total__who">
+              <PersonAvatar name={ctx.recorder} size={24} />
+              {ctx.recorder}
+            </span>
+          )}
         </div>
       </div>
 

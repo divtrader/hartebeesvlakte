@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { ClipPlayer } from '../components/ClipPlayer';
 import { Icon } from '../components/Icon';
 import { PhotoRow } from '../components/PhotoStrip';
 import { RecordRow } from '../components/RecordRow';
@@ -21,6 +22,7 @@ export function SpeciesDetail({ id }: { id: string }) {
   const group = GROUPS[species.group];
   const isPlant = species.group === 'plants';
   const photos = mine.flatMap((r) => r.photoIds ?? []).slice(0, 12);
+  const clips = mine.filter((r) => r.clipId).slice(0, 5);
   const peak = Math.max(1, ...summary.byMonth);
   const currentMonth = new Date().getMonth();
 
@@ -110,6 +112,22 @@ export function SpeciesDetail({ id }: { id: string }) {
         <section className="section">
           <h2>Photos</h2>
           <PhotoRow ids={photos} />
+        </section>
+      )}
+
+      {clips.length > 0 && (
+        <section className="section">
+          <h2>Recordings</h2>
+          <div className="card clips">
+            {clips.map((r) => (
+              <div key={r.id} className="clips__row">
+                <span className="muted">
+                  {formatDay(r.at)} · {Math.round((r.confidence ?? 0) * 100)}% sure
+                </span>
+                <ClipPlayer id={r.clipId!} />
+              </div>
+            ))}
+          </div>
         </section>
       )}
 

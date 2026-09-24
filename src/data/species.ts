@@ -13,6 +13,8 @@ export interface Species {
   /** Flower colour, used for the dots in lists and calendars. */
   colour?: string;
   unknown?: boolean;
+  /** Scientific name BirdNET uses, where it differs from `sci`. */
+  birdnet?: string;
 }
 
 export interface GroupInfo {
@@ -61,7 +63,7 @@ export const SPECIES: Species[] = [
   { id: 'pale-chanting-goshawk', group: 'birds', en: 'Pale chanting goshawk', af: 'Bleeksingvalk', sci: 'Melierax canorus' },
   { id: 'rock-kestrel', group: 'birds', en: 'Rock kestrel', af: 'Kransvalk', sci: 'Falco rupicolus' },
   { id: 'secretarybird', group: 'birds', en: 'Secretarybird', af: 'Sekretarisvoël', sci: 'Sagittarius serpentarius' },
-  { id: 'blue-crane', group: 'birds', en: 'Blue crane', af: 'Bloukraanvoël', sci: 'Grus paradisea' },
+  { id: 'blue-crane', group: 'birds', en: 'Blue crane', af: 'Bloukraanvoël', sci: 'Grus paradisea', birdnet: 'Anthropoides paradiseus' },
   { id: 'spotted-eagle-owl', group: 'birds', en: 'Spotted eagle-owl', af: 'Gevlekte ooruil', sci: 'Bubo africanus' },
   { id: 'european-bee-eater', group: 'birds', en: 'European bee-eater', af: 'Europese byvreter', sci: 'Merops apiaster' },
   { id: 'diederik-cuckoo', group: 'birds', en: 'Diederik cuckoo', af: 'Diederikkie', sci: 'Chrysococcyx caprius' },
@@ -132,13 +134,36 @@ export const SPECIES: Species[] = [
 ];
 
 const byId = new Map(SPECIES.map((s) => [s.id, s]));
+const added: Species[] = [];
+
+/** Adds species found by bird sound identification that are not on the starter list. */
+export function registerSpecies(list: Species[]): void {
+  for (const s of list) {
+    if (byId.has(s.id)) continue;
+    byId.set(s.id, s);
+    added.push(s);
+  }
+}
+
+/** The starter list plus species added from bird sounds. */
+export function allSpecies(): Species[] {
+  return added.length ? [...SPECIES, ...added] : SPECIES;
+}
 
 export function getSpecies(id: string | undefined): Species | undefined {
   return id ? byId.get(id) : undefined;
 }
 
 export function speciesInGroups(groups: Group[]): Species[] {
-  return SPECIES.filter((s) => groups.includes(s.group));
+  return allSpecies().filter((s) => groups.includes(s.group));
+}
+
+/** The species a BirdNET result refers to: from the list when known, otherwise a new bird species. */
+export function speciesForBirdnet(sci: string, en: string, af: string): Species {
+  const known = allSpecies().find((s) => s.sci === sci || s.birdnet === sci);
+  if (known) return known;
+  const id = `bn-${fold(sci).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+  return { id, group: 'birds', en, af, sci };
 }
 
 /** Plants that usually flower in the given month (1 to 12). */

@@ -1,5 +1,6 @@
 import { Icon } from './Icon';
 import { Logo } from './Logo';
+import { PersonAvatar } from './PersonAvatar';
 import type { IconName } from './icons';
 import { href } from '../lib/router';
 import { useSetting } from '../db';
@@ -29,6 +30,7 @@ const SIDEBAR: (NavItem | 'gap')[] = [
   { path: 'count', label: 'Quick count', icon: 'binoculars' },
   { path: 'sighting', label: 'Sighting', icon: 'pin' },
   { path: 'plant', label: 'Plant record', icon: 'flower' },
+  { path: 'listen', label: 'Bird sounds', icon: 'mic' },
   { path: 'rain', label: 'Rain', icon: 'drop' },
   'gap',
   { path: 'settings', label: 'Settings', icon: 'settings' },
@@ -85,7 +87,7 @@ export function Sidebar({ current }: { current: string }) {
         )}
       </nav>
       <div className="sidebar__foot">
-        <Icon name="phone" size={20} />
+        {recorder ? <PersonAvatar name={recorder} size={36} active /> : <Icon name="phone" size={20} />}
         <span>
           <strong>Saved on this device</strong>
           <small>{recorder ? `Recording as ${recorder}` : 'Choose who is recording in Settings'}</small>

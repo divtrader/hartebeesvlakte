@@ -11,6 +11,9 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
+  worker: {
+    format: 'es',
+  },
   plugins: [
     react(),
     VitePWA({
@@ -35,8 +38,20 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        globIgnores: ['**/models/**'],
+        // The bird sound worker bundles TensorFlow.js and is larger than Workbox's 2 MB default.
+        maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         navigateFallback: 'index.html',
         runtimeCaching: [
+          {
+            // The BirdNET model is downloaded once on request (see src/birdnet/files.ts) and then served offline.
+            urlPattern: ({ url }) => url.pathname.includes('/models/birdnet/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'birdnet-model',
+              cacheableResponse: { statuses: [200] },
+            },
+          },
           {
             // Map tiles are cached as they are viewed, so the farm map keeps working without signal.
             urlPattern: ({ url }) =>

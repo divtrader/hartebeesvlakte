@@ -24,11 +24,12 @@ export function recordTitle(r: FieldRecord): string {
 export function recordValue(r: FieldRecord): string {
   if (r.kind === 'rain') return `${r.mm ?? 0} mm`;
   if (r.kind === 'plant') return r.stage ?? '';
+  if (r.source === 'sound') return `${Math.round((r.confidence ?? 0) * 100)}%`;
   return String(r.n ?? 1);
 }
 
 export function recordMeta(r: FieldRecord): string {
-  return [r.camp, r.by, formatTime(r.at)].filter(Boolean).join(' · ');
+  return [r.source === 'sound' ? 'Heard' : undefined, r.camp, r.by, formatTime(r.at)].filter(Boolean).join(' · ');
 }
 
 type CountBase = Omit<FieldRecord, 'id' | 'kind' | 'speciesId' | 'n' | 'sessionId' | 'updatedAt'>;

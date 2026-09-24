@@ -1,4 +1,5 @@
 import { Icon } from './Icon';
+import { PersonAvatar } from './PersonAvatar';
 import { Avatar } from './ui';
 import type { FieldRecord } from '../db';
 import { getSpecies } from '../data/species';
@@ -12,11 +13,19 @@ export function RecordRow({ record, showDay = false }: { record: FieldRecord; sh
   const meta = showDay ? `${formatDay(record.at)} · ${recordMeta(record)}` : recordMeta(record);
   const content = (
     <>
-      <Avatar icon={style.icon} colour={style.colour} tint={style.tint} />
+      <span className="list-row__icon">
+        <Avatar icon={style.icon} colour={style.colour} tint={style.tint} />
+        {record.by && record.by !== 'Unknown' && (
+          <span className="list-row__who">
+            <PersonAvatar name={record.by} size={20} />
+          </span>
+        )}
+      </span>
       <span className="list-row__text">
         <span className="list-row__title">{recordTitle(record)}</span>
         <span className="list-row__meta">{meta}</span>
       </span>
+      {record.clipId ? <Icon name="wave" size={16} className="list-row__photo" /> : null}
       {record.photoIds?.length ? <Icon name="camera" size={16} className="list-row__photo" /> : null}
       <span className={`list-row__value${record.kind === 'plant' ? ' list-row__value--text' : ''}`}>{recordValue(record)}</span>
     </>

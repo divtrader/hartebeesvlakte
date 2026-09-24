@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Icon } from '../components/Icon';
 import { GroupAvatar } from '../components/ui';
 import { useRecords } from '../db';
-import { GROUPS, SPECIES, matchesSearch, type Group } from '../data/species';
+import { GROUPS, allSpecies, matchesSearch, type Group } from '../data/species';
 import { formatDay } from '../lib/format';
 import { href } from '../lib/router';
 
@@ -27,14 +27,14 @@ export function SpeciesList() {
     return map;
   }, [records]);
 
-  const list = SPECIES.filter((s) => (filter === 'all' || s.group === filter) && matchesSearch(s, query)).sort(
+  const list = allSpecies().filter((s) => (filter === 'all' || s.group === filter) && matchesSearch(s, query)).sort(
     (a, b) =>
       Number(a.unknown ?? false) - Number(b.unknown ?? false) ||
       (seen.get(b.id)?.count ?? 0) - (seen.get(a.id)?.count ?? 0) ||
       a.en.localeCompare(b.en),
   );
-  const recorded = SPECIES.filter((s) => !s.unknown && seen.has(s.id)).length;
-  const known = SPECIES.filter((s) => !s.unknown).length;
+  const recorded = allSpecies().filter((s) => !s.unknown && seen.has(s.id)).length;
+  const known = allSpecies().filter((s) => !s.unknown).length;
 
   return (
     <>

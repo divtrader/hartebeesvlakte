@@ -1,8 +1,12 @@
 import { Suspense, lazy, useEffect } from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
 import { Sidebar, TabBar } from './components/Nav';
 import { Toast } from './components/Toast';
+import { db } from './db';
+import { registerSpecies } from './data/species';
 import { useRoute } from './lib/router';
 import { Count } from './screens/Count';
+import { Listen } from './screens/Listen';
 import { NotFound } from './screens/NotFound';
 import { Plant } from './screens/Plant';
 import { Rain } from './screens/Rain';
@@ -32,6 +36,8 @@ function Screen({ page, rest }: { page: string; rest: string[] }) {
       return <Plant />;
     case 'rain':
       return <Rain />;
+    case 'listen':
+      return <Listen />;
     case 'map':
       return (
         <Suspense fallback={<div className="mapview" />}>
@@ -54,6 +60,9 @@ function Screen({ page, rest }: { page: string; rest: string[] }) {
 export function App() {
   const [page = '', ...rest] = useRoute();
   const isForm = FORMS.has(page);
+  // Birds saved from sound identification join the species list.
+  const added = useLiveQuery(() => db.species.toArray(), []);
+  if (added) registerSpecies(added);
 
   useEffect(() => {
     window.scrollTo(0, 0);

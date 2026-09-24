@@ -1,10 +1,13 @@
 import { useEffect, useState, type ChangeEvent } from 'react';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
+import { usePeople } from '../components/PersonAvatar';
+import { WhoPicker } from './Today';
 import { setSetting, useRecords, useSetting } from '../db';
-import { DEFAULT_CAMPS, DEFAULT_PEOPLE, FARM } from '../data/farm';
+import { DEFAULT_CAMPS, FARM } from '../data/farm';
 import { downloadBlob, exportBackup, importBackup, recordsToCsv } from '../lib/export';
 import { plural, toDateInput } from '../lib/format';
+import { install, useCanInstall } from '../lib/install';
 import { toast } from '../lib/toast';
 
 function EditableList({ items, onChange, addLabel, placeholder }: { items: string[]; onChange: (items: string[]) => void; addLabel: string; placeholder: string }) {
@@ -61,10 +64,11 @@ function useStorageInfo() {
 
 export function Settings() {
   const recorder = useSetting<string>('recorder', '');
-  const people = useSetting<string[]>('people', DEFAULT_PEOPLE);
   const camps = useSetting<string[]>('camps', DEFAULT_CAMPS);
   const records = useRecords();
   const storage = useStorageInfo();
+  const faces = usePeople().filter((p) => p.avatar).length;
+  const canInstall = useCanInstall();
   const [busy, setBusy] = useState(false);
 
   async function backup() {
@@ -84,7 +88,11 @@ export function Settings() {
     setBusy(true);
     try {
       const result = await importBackup(file);
-      toast(`Added ${plural(result.records, 'record')} and ${plural(result.photos, 'photo')}`);
+      toast(
+        result.people && !result.records
+          ? `Loaded ${plural(result.people, 'face')}`
+          : `Added ${plural(result.records, 'record')} and ${plural(result.photos, 'photo')}`,
+      );
     } catch (error) {
       toast(error instanceof Error ? error.message : 'Could not read the backup');
     } finally {
@@ -104,18 +112,21 @@ export function Settings() {
 
       <section className="card settings-block">
         <h2>Who is recording on this device</h2>
-        <p className="muted">Every record shows who made it.</p>
-        <div className="chips" role="group" aria-label="Recording as">
-          {people.map((p) => (
-            <button key={p} type="button" className="chip" aria-pressed={recorder === p} onClick={() => setSetting('recorder', p)}>
-              {p}
-            </button>
-          ))}
-        </div>
-        <details>
-          <summary>Edit the list of people</summary>
-          <EditableList items={people} onChange={(next) => setSetting('people', next)} addLabel="Add a person" placeholder="Name" />
-        </details>
+        <p className="muted">Tap your face. Every record shows who made it.</p>
+        <WhoPicker current={recorder} onPick={(name) => setSetting('recorder', name)} />
+      </section>
+
+      <section className="card settings-block">
+        <h2>Family faces</h2>
+        <p className="muted">
+          The family photos are kept out of the public app. Load the family file once on each phone to show everyone&apos;s face.
+          {faces ? ` ${plural(faces, 'face')} loaded on this device.` : ''}
+        </p>
+        <label className="btn">
+          <Icon name="upload" size={20} />
+          Load family file
+          <input type="file" accept="application/json,.json" className="visually-hidden" onChange={restore} disabled={busy} />
+        </label>
       </section>
 
       <section className="card settings-block">
@@ -148,7 +159,14 @@ export function Settings() {
       </section>
 
       <section className="card settings-block">
-        <h2>Install on iPhone</h2>
+        <h2>Install the app</h2>
+        {canInstall && (
+          <button type="button" className="btn btn--primary" onClick={() => void install()}>
+            <Icon name="download" size={20} />
+            Install Veldboek on this device
+          </button>
+        )}
+        <h3>iPhone</h3>
         <ol className="steps">
           <li>
             Open this page in <b>Safari</b>.
@@ -160,7 +178,19 @@ export function Settings() {
             Tap <b>Add to Home Screen</b>, then <b>Add</b>.
           </li>
         </ol>
-        <p className="muted">The app then opens full screen, works without signal, and iPhone keeps its records safe.</p>
+        <h3>Android (Samsung and others)</h3>
+        <ol className="steps">
+          <li>
+            Open this page in <b>Chrome</b>.
+          </li>
+          <li>
+            Tap the <b>⋮</b> menu at the top right.
+          </li>
+          <li>
+            Tap <b>Install app</b> or <b>Add to Home screen</b>.
+          </li>
+        </ol>
+        <p className="muted">The app then opens full screen, works without signal, and the phone keeps its records safe.</p>
       </section>
 
       <section className="card settings-block about">
