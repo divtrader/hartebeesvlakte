@@ -37,7 +37,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2}', 'family.json'],
         globIgnores: ['**/models/**'],
         // The bird sound worker bundles TensorFlow.js and is larger than Workbox's 2 MB default.
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,

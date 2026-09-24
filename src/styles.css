@@ -802,6 +802,17 @@ button.list-row:hover {
   font-size: 27px;
 }
 
+.today__title span {
+  display: block;
+  font-size: 15px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-top: 2px;
+}
+
 .today__grid,
 .today__col {
   display: flex;
@@ -2118,6 +2129,125 @@ button.list-row:hover {
 .list-row__icon {
   position: relative;
   flex-shrink: 0;
+}
+
+/* First start setup */
+
+.setup {
+  min-height: 100dvh;
+  max-width: 520px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: calc(env(safe-area-inset-top) + 20px) 22px calc(env(safe-area-inset-bottom) + 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setup__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.setup__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--line-strong);
+}
+
+.setup__dots span[data-on='true'] {
+  width: 24px;
+  background: var(--terracotta);
+}
+
+.setup__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.setup__body--top {
+  justify-content: flex-start;
+  padding-top: 12px;
+}
+
+.setup__body h1 {
+  font-size: 30px;
+}
+
+.setup__body p {
+  max-width: 380px;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.setup__body .who__pick {
+  width: 100%;
+}
+
+.setup__icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #dceaf0;
+  color: #2d6a88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.setup__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.setup__go {
+  width: 100%;
+  height: 58px;
+  font-size: 17px;
+  border-radius: 16px;
+}
+
+.setup__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+  font-size: 17px;
+}
+
+.setup__steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.setup__steps svg {
+  vertical-align: -3px;
+}
+
+.setup__num {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Toast */

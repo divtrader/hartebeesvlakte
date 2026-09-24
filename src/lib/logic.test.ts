@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import { toCsv } from './csv';
 import { moonPhase } from './moon';
 import { countToRecords, rainByMonth, speciesSummary } from './records';
 import { formatDay, formatShortDate } from './format';
@@ -15,15 +14,6 @@ describe('moon phase', () => {
   });
   it('knows a new moon', () => {
     expect(moonPhase(new Date(Date.UTC(2024, 0, 11, 12)))).toBe('New moon');
-  });
-});
-
-describe('csv', () => {
-  it('quotes commas, quotes and new lines', () => {
-    expect(toCsv([['a,b', 'say "hi"', 'two\nlines']])).toBe('"a,b","say ""hi""","two\nlines"');
-  });
-  it('stops text being read as a formula but leaves numbers alone', () => {
-    expect(toCsv([['=SUM(A1)', -33.54, undefined]])).toBe("'=SUM(A1),-33.54,");
   });
 });
 

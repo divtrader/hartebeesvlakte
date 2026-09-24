@@ -5,8 +5,7 @@ import { PhotoRow } from '../components/PhotoStrip';
 import { RecordRow } from '../components/RecordRow';
 import { Empty } from '../components/ui';
 import { deleteRecord, useRecords, type FieldRecord, type Kind } from '../db';
-import { formatDay, plural, toDateInput } from '../lib/format';
-import { downloadBlob, recordsToCsv } from '../lib/export';
+import { formatDay, plural } from '../lib/format';
 import { recordTitle } from '../lib/records';
 import { toast } from '../lib/toast';
 
@@ -41,24 +40,13 @@ export function Records() {
     toast('Record deleted');
   }
 
-  function exportCsv() {
-    const csv = recordsToCsv(records ?? []);
-    downloadBlob(new Blob(['﻿', csv], { type: 'text/csv;charset=utf-8' }), `veldboek-records-${toDateInput(Date.now())}.csv`);
-  }
-
   const total = records?.length ?? 0;
 
   return (
     <>
-      <header className="page-head page-head--row">
-        <div>
-          <h1>All records</h1>
-          <span className="muted">{plural(total, 'record')} on this device</span>
-        </div>
-        <button type="button" className="btn btn--small" onClick={exportCsv} disabled={!total}>
-          <Icon name="download" size={18} />
-          Spreadsheet
-        </button>
+      <header className="page-head">
+        <h1>All records</h1>
+        <span className="muted">{plural(total, 'record')} on this device</span>
       </header>
       <div className="chips" role="group" aria-label="Show">
         {FILTERS.map((f) => (

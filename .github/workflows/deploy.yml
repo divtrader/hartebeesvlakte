@@ -25,6 +25,18 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      # The family's names and portraits live in a secret gist, not in this public repo.
+      - name: Add the family portraits
+        env:
+          FAMILY_GIST_ID: ${{ secrets.FAMILY_GIST_ID }}
+        run: |
+          if [ -z "$FAMILY_GIST_ID" ]; then
+            echo "No FAMILY_GIST_ID secret; building without family portraits."
+            exit 0
+          fi
+          curl -sfSL "https://api.github.com/gists/$FAMILY_GIST_ID" | jq -e -r '.files["family.json"].content' > public/family.json
+          jq -e '.kind == "family" and (.people | length) > 0' public/family.json > /dev/null
+          echo "Added $(jq '.people | length' public/family.json) family portraits."
       - run: npm run build
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5

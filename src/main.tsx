@@ -7,11 +7,13 @@ import '@fontsource/figtree/600.css';
 import '@fontsource/figtree/700.css';
 import './styles.css';
 import { App } from './App';
+import { loadFamily } from './lib/family';
 import { listenForInstall } from './lib/install';
 
 // Installs the service worker that keeps the app working without signal, and updates it quietly.
 registerSW({ immediate: true });
 listenForInstall();
+void loadFamily();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

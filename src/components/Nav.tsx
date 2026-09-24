@@ -69,9 +69,7 @@ export function Sidebar({ current }: { current: string }) {
         <Logo size={44} />
         <span>
           <strong>{FARM.name}</strong>
-          <small>
-            {FARM.region} · about {FARM.areaHa.toLocaleString('en-GB')} ha
-          </small>
+          <small>Veldboek · {FARM.region}</small>
         </span>
       </a>
       <nav aria-label="Sections">

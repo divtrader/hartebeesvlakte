@@ -10,3 +10,4 @@ Thumbs.db
 *.log
 .claude/
 private/
+public/family.json

@@ -1,14 +1,11 @@
-import { useEffect, useState, type ChangeEvent } from 'react';
+import { useEffect, useState } from 'react';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
-import { usePeople } from '../components/PersonAvatar';
 import { WhoPicker } from './Today';
 import { setSetting, useRecords, useSetting } from '../db';
 import { DEFAULT_CAMPS, FARM } from '../data/farm';
-import { downloadBlob, exportBackup, importBackup, recordsToCsv } from '../lib/export';
-import { plural, toDateInput } from '../lib/format';
+import { plural } from '../lib/format';
 import { install, useCanInstall } from '../lib/install';
-import { toast } from '../lib/toast';
 
 function EditableList({ items, onChange, addLabel, placeholder }: { items: string[]; onChange: (items: string[]) => void; addLabel: string; placeholder: string }) {
   const [value, setValue] = useState('');
@@ -67,42 +64,7 @@ export function Settings() {
   const camps = useSetting<string[]>('camps', DEFAULT_CAMPS);
   const records = useRecords();
   const storage = useStorageInfo();
-  const faces = usePeople().filter((p) => p.avatar).length;
   const canInstall = useCanInstall();
-  const [busy, setBusy] = useState(false);
-
-  async function backup() {
-    setBusy(true);
-    try {
-      downloadBlob(await exportBackup(), `veldboek-backup-${toDateInput(Date.now())}.json`);
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function restore(e: ChangeEvent<HTMLInputElement>) {
-    const input = e.currentTarget;
-    const file = input.files?.[0];
-    input.value = '';
-    if (!file) return;
-    setBusy(true);
-    try {
-      const result = await importBackup(file);
-      toast(
-        result.people && !result.records
-          ? `Loaded ${plural(result.people, 'face')}`
-          : `Added ${plural(result.records, 'record')} and ${plural(result.photos, 'photo')}`,
-      );
-    } catch (error) {
-      toast(error instanceof Error ? error.message : 'Could not read the backup');
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  function spreadsheet() {
-    downloadBlob(new Blob(['﻿', recordsToCsv(records ?? [])], { type: 'text/csv;charset=utf-8' }), `veldboek-records-${toDateInput(Date.now())}.csv`);
-  }
 
   return (
     <>
@@ -117,45 +79,9 @@ export function Settings() {
       </section>
 
       <section className="card settings-block">
-        <h2>Family faces</h2>
-        <p className="muted">
-          The family photos are kept out of the public app. Load the family file once on each phone to show everyone&apos;s face.
-          {faces ? ` ${plural(faces, 'face')} loaded on this device.` : ''}
-        </p>
-        <label className="btn">
-          <Icon name="upload" size={20} />
-          Load family file
-          <input type="file" accept="application/json,.json" className="visually-hidden" onChange={restore} disabled={busy} />
-        </label>
-      </section>
-
-      <section className="card settings-block">
         <h2>Camps</h2>
         <p className="muted">These are placeholders until the real kampe are entered. Removing one does not change old records.</p>
         <EditableList items={camps} onChange={(next) => setSetting('camps', next)} addLabel="Add a camp" placeholder="Camp name" />
-      </section>
-
-      <section className="card settings-block">
-        <h2>Backup and spreadsheet</h2>
-        <p className="muted">
-          Records are stored on this device only, until syncing between phones is added. Download a backup now and then, and restore it on another
-          device to copy records across.
-        </p>
-        <div className="settings-actions">
-          <button type="button" className="btn" onClick={backup} disabled={busy}>
-            <Icon name="download" size={20} />
-            Download backup
-          </button>
-          <label className="btn">
-            <Icon name="upload" size={20} />
-            Restore a backup
-            <input type="file" accept="application/json,.json" className="visually-hidden" onChange={restore} disabled={busy} />
-          </label>
-          <button type="button" className="btn" onClick={spreadsheet} disabled={!records?.length}>
-            <Icon name="list" size={20} />
-            Spreadsheet (CSV)
-          </button>
-        </div>
       </section>
 
       <section className="card settings-block">

@@ -74,16 +74,6 @@ export function WhoPicker({ current, onPick }: { current?: string; onPick: (name
   );
 }
 
-function WhoCard() {
-  return (
-    <section className="card who">
-      <h2>Who is using this phone?</h2>
-      <p className="muted">Tap your face. Records show who made them, and you can change it later in Settings.</p>
-      <WhoPicker onPick={(name) => setSetting('recorder', name)} />
-    </section>
-  );
-}
-
 function InstallHint() {
   const dismissed = useSetting<boolean>('installHintDismissed', false);
   const canInstall = useCanInstall();
@@ -141,7 +131,9 @@ export function Today() {
         <Logo size={48} />
         <div>
           <span className="eyebrow">{formatLongDate(now)}</span>
-          <h1>{FARM.name}</h1>
+          <h1 className="today__title">
+            {FARM.name} <span>Veldboek</span>
+          </h1>
         </div>
         {recorder ? (
           <a className="today__me" href={href('settings')} aria-label={`Recording as ${recorder}. Open settings`}>
@@ -154,7 +146,6 @@ export function Today() {
         )}
       </header>
 
-      {!recorder && <WhoCard />}
       <InstallHint />
 
       {draftTotal > 0 && (

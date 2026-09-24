@@ -13,6 +13,7 @@ import { Rain } from './screens/Rain';
 import { Records } from './screens/Records';
 import { Seasons } from './screens/Seasons';
 import { Settings } from './screens/Settings';
+import { Setup } from './screens/Setup';
 import { Sighting } from './screens/Sighting';
 import { SpeciesDetail } from './screens/SpeciesDetail';
 import { SpeciesList } from './screens/SpeciesList';
@@ -63,10 +64,15 @@ export function App() {
   // Birds saved from sound identification join the species list.
   const added = useLiveQuery(() => db.species.toArray(), []);
   if (added) registerSpecies(added);
+  // null while loading, so the setup screens never flash for someone who has done them.
+  const setupDone = useLiveQuery(async () => ((await db.settings.get('setupDone'))?.value as boolean | undefined) ?? false, [], null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page, rest[0]]);
+
+  if (setupDone === null) return null;
+  if (!setupDone) return <Setup />;
 
   return (
     <div className={`app${isForm ? ' app--form' : ''}`}>

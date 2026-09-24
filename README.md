@@ -18,13 +18,15 @@ It then opens full screen like an app and works without signal. Records are save
 - **Plant record:** stage (buds, flowering, seeding), how many plants, flower colour, and photo points to retake every season. Unknown plants can be named later.
 - **Rain:** readings from the rain gauge.
 - **Bird sounds:** listens through the microphone and names birds from their calls with BirdNET, filtered to the species expected at the farm in the current week. The 3 second recording is saved with the record so it can be checked later. The 60 MB model downloads once on request, then works without signal.
-- **Family faces:** everyone picks their own face to show who made each record. The faces come from a private family file loaded in Settings; they are not part of this public code.
+- **First start:** a short setup asks who you are (tap your face), asks for location, and helps put the app on the home screen.
+- **Family faces:** the family is fixed; each record shows who made it. The portraits are added when the app is published, from a secret gist named in the `FAMILY_GIST_ID` repository secret. They are not part of this public code.
 - **Map:** satellite map of the farm with every record that has a GPS position.
 - **Species book:** English and Afrikaans names for every species, with records per month and when each plant was seen flowering.
 - **Seasons:** a month by month guide for this part of the Klein Karoo, next to what the farm's own records show.
-- **Backup and spreadsheet:** download a backup (records and photos) or a CSV file for Excel.
 
 No passwords: each device chooses who is recording (for example Toppie) and keeps its records locally. Syncing between phones is the next step.
+
+For local development, put a copy of the family file at `public/family.json` (ignored by git).
 
 ## Developing
 
