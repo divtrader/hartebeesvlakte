@@ -8,6 +8,8 @@ import { encodeWav, resample } from './wav';
 import { parseForecast, weatherIcon, weatherWords } from './weather';
 import { monthGuide } from '../data/seasons';
 import type { FieldRecord } from '../db';
+import { FARM_HA, PORTIONS, portionAt } from '../data/boundary';
+import { FARM } from '../data/farm';
 
 describe('moon phase', () => {
   it('knows a full moon', () => {
@@ -131,5 +133,22 @@ describe('dates', () => {
     expect(formatDay(new Date(2026, 8, 24, 7, 40).getTime(), now)).toBe('Today');
     expect(formatDay(new Date(2026, 8, 23, 18).getTime(), now)).toBe('Yesterday');
     expect(formatShortDate(new Date(2025, 9, 3).getTime(), now)).toBe('3 Oct 2025');
+  });
+});
+
+describe('farm boundary', () => {
+  it('finds the portion a position is in', () => {
+    expect(portionAt(FARM.centre[0], FARM.centre[1])?.name).toBe('Geelbosch Laagte');
+    for (const p of PORTIONS) expect(portionAt(p.label[0], p.label[1])?.id).toBe(p.id);
+  });
+
+  it('leaves out the sold portion 54/80 and places outside the farm', () => {
+    // Inside the sold portion 54 of Weltevreden, next to the label on the cadastral map.
+    expect(portionAt(-33.510135, 21.419436)).toBeUndefined();
+    expect(portionAt(-33.45, 21.3)).toBeUndefined();
+  });
+
+  it('adds up the registered areas', () => {
+    expect(FARM_HA).toBe(3899);
   });
 });

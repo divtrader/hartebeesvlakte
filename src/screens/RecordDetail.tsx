@@ -7,6 +7,7 @@ import { PhotoRow } from '../components/PhotoStrip';
 import { SpeciesPicker } from '../components/SpeciesPicker';
 import { ActionBar, Chips, Empty, Field, SpeciesThumb, Stepper, TopBar } from '../components/ui';
 import { AMOUNTS, STAGES, db, deleteRecord, useRecords, useSetting, type Amount, type FieldRecord, type Stage } from '../db';
+import { portionAt } from '../data/boundary';
 import { DEFAULT_CAMPS } from '../data/farm';
 import { ANIMAL_GROUPS, getSpecies, type Group } from '../data/species';
 import { formatDay, formatTime, toDateInput } from '../lib/format';
@@ -71,6 +72,7 @@ function RecordForm({ record }: { record: FieldRecord }) {
   const groups: Group[] = record.kind === 'plant' ? ['plants'] : heard ? ['birds'] : ANIMAL_GROUPS;
   const campOptions = record.camp && !camps.includes(record.camp) ? [record.camp, ...camps] : camps;
   const when = `${formatDay(record.at)} at ${formatTime(record.at)}`;
+  const portion = record.lat !== undefined && record.lng !== undefined ? (portionAt(record.lat, record.lng)?.name ?? 'Outside the farm') : undefined;
 
   async function save() {
     const changes: Partial<FieldRecord> = { camp: camp.trim() || undefined, note: note.trim() || undefined, updatedAt: Date.now() };
@@ -125,7 +127,7 @@ function RecordForm({ record }: { record: FieldRecord }) {
         <strong>{by ?? 'Nobody chosen'}</strong>
         <span>
           {when}
-          {record.lat !== undefined && ` · GPS to ${record.acc ?? '?'} m`}
+          {portion && ` · ${portion}`}
         </span>
       </div>
     </div>

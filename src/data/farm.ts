@@ -3,7 +3,6 @@ export const FARM = {
   region: 'Klein Karoo',
   /** Homestead, from the Google Maps pin 33°32'24.8"S 21°25'24.3"E. */
   centre: [-33.540234, 21.423402] as [number, number],
-  areaHa: 4000,
 };
 
 /** Placeholder camp names until the real kampe are entered in Settings. */

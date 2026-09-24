@@ -21,7 +21,7 @@ It then opens full screen like an app and works without signal. Records are save
 - **First start:** a short setup asks who you are (tap your face), asks for location, and helps put the app on the home screen.
 - **Family faces:** the family is fixed; each record shows who made it. The portraits are added when the app is published, from a secret gist named in the `FAMILY_GIST_ID` repository secret. They are not part of this public code.
 - **Fixing a record:** tap any record to open it. The person who made it can change the count, species, camp or note (stage and colour for plants, millimetres and day for rain), or delete it. Everyone else sees it read only.
-- **Map:** satellite map of the farm with every record that has a GPS position.
+- **Map:** satellite map of the farm with every record that has a GPS position, the farm boundary and the six title deed portions (3,899 ha): Weltevreden 16/80, Breede Nek 161, Oude Kloof 1/162, Annex Geelbosch Laagte 164, Geelbosch Laagte 165 and Plaas 286. When recording, the GPS line says which portion you are in. Portion 54/80 was sold and is not shown.
 - **Species book:** a photo and a short description for every species, English and Afrikaans names, records per month and when each plant was seen flowering. Photos and text come from Wikipedia and Wikimedia Commons (credited on each species page); refresh them with `npm run species`.
 - **Weather:** the Yr forecast for Toit's Dam (MET Norway data), the location the farm uses on yr.no. The last forecast stays on the phone when there is no signal.
 - **Seasons:** a month by month guide for this part of the Klein Karoo, next to what the farm's own records show.
@@ -45,6 +45,6 @@ Then open http://localhost:5173/hartebeesvlakte/.
 
 Every push to `main` is tested, built and published to GitHub Pages by `.github/workflows/deploy.yml`.
 
-Built with React, Vite, Dexie (IndexedDB), Leaflet and TensorFlow.js. Satellite imagery by Esri; contour map by OpenTopoMap. Weather data from MET Norway (Yr), CC BY 4.0. Species photos from Wikimedia Commons under their own licences, and summaries from Wikipedia (CC BY-SA 4.0).
+Built with React, Vite, Dexie (IndexedDB), Leaflet and TensorFlow.js. Satellite imagery by Esri; contour map by OpenTopoMap. Weather data from MET Norway (Yr), CC BY 4.0. Farm boundary beacons from the cadastral map compiled by Boundary Hunter (September 2014) from SA Surveyor General data, in `src/data/boundary.ts`. Species photos from Wikimedia Commons under their own licences, and summaries from Wikipedia (CC BY-SA 4.0).
 
 Bird sound identification uses the BirdNET V2.4 model by the K. Lisa Yang Center for Conservation Bioacoustics at the Cornell Lab of Ornithology and Chemnitz University of Technology (Kahl et al. 2021), licensed CC BY-NC-SA 4.0 for non commercial use. See `public/models/birdnet/README.md`.

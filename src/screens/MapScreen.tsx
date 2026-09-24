@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import { Icon } from '../components/Icon';
 import { iconSvg } from '../components/icons';
 import { useRecords, type FieldRecord } from '../db';
+import { BOUNDARY, PORTIONS } from '../data/boundary';
 import { FARM } from '../data/farm';
 import { GROUPS, getSpecies, type Group } from '../data/species';
 import { formatDay, formatTime, plural } from '../lib/format';
@@ -25,6 +26,28 @@ function inPeriod(r: FieldRecord, period: Period, now: number): boolean {
   if (period === 'all') return true;
   if (period === '30') return now - r.at < 30 * 86_400_000;
   return new Date(r.at).getFullYear() === new Date(now).getFullYear();
+}
+
+/** The farm's outside boundary in yellow, the lines between its title deed portions dashed, and each portion's name. */
+function boundaryLayer(): L.LayerGroup {
+  const group = L.layerGroup();
+  for (const p of PORTIONS) {
+    L.polygon(p.ring, { color: '#FFFFFF', weight: 1.5, opacity: 0.85, dashArray: '6 6', fill: false, interactive: false }).addTo(group);
+    L.marker(p.label, {
+      icon: L.divIcon({
+        className: `portion-label${p.ha < 10 ? ' portion-label--small' : ''}`,
+        html: `<strong>${p.name}</strong><span>${p.id} · ${Math.round(p.ha)} ha</span>`,
+        iconSize: [160, 34],
+        iconAnchor: [80, 17],
+      }),
+      interactive: false,
+      keyboard: false,
+    }).addTo(group);
+  }
+  // A dark edge under the yellow keeps the boundary visible on the pale contour map too.
+  L.polygon(BOUNDARY, { color: '#000000', weight: 5, opacity: 0.3, fill: false, interactive: false }).addTo(group);
+  L.polygon(BOUNDARY, { color: '#FFD400', weight: 2.5, opacity: 1, fill: false, interactive: false }).addTo(group);
+  return group;
 }
 
 function pinIcon(r: FieldRecord): L.DivIcon {
@@ -77,9 +100,27 @@ export function MapScreen() {
       maxZoom: 17,
       attribution: '© OpenStreetMap contributors, SRTM · style © OpenTopoMap (CC BY-SA)',
     });
-    const map = L.map(holder.current, { zoomControl: false, layers: [satellite] }).setView(FARM.centre, 13);
+    const boundary = boundaryLayer();
+    // Quarter zoom steps let the whole farm fill a phone screen; the + and - buttons still zoom a full step.
+    const map = L.map(holder.current, { zoomControl: false, zoomSnap: 0.25, layers: [satellite, boundary] });
+    // Show the whole farm, and again whenever the map's box changes size (it can still be settling when the
+    // map opens, or the phone is turned), until someone moves the map themselves.
+    const box = holder.current;
+    // Zoomed out, only the portion names show, so they do not run into each other.
+    map.on('zoomend', () => box.classList.toggle('mapview__map--far', map.getZoom() < 13));
+    const fitFarm = () => map.fitBounds(L.latLngBounds(BOUNDARY), { padding: [12, 12], animate: false });
+    fitFarm();
+    let moved = false;
+    const onTouch = () => (moved = true);
+    box.addEventListener('pointerdown', onTouch);
+    box.addEventListener('wheel', onTouch);
+    const resized = new ResizeObserver(() => {
+      map.invalidateSize();
+      if (!moved) fitFarm();
+    });
+    resized.observe(box);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-    L.control.layers({ Satellite: satellite, 'Contour map': topo }, undefined, { position: 'bottomright' }).addTo(map);
+    L.control.layers({ Satellite: satellite, 'Contour map': topo }, { 'Farm boundary': boundary }, { position: 'bottomright' }).addTo(map);
     L.marker(FARM.centre, {
       icon: L.divIcon({ className: 'pin-wrap', html: `<span class="pin pin--home">${iconSvg('home', 16, 2.2)}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] }),
       title: 'House',
@@ -95,6 +136,9 @@ export function MapScreen() {
     map.on('locationerror', () => toast('Could not find your position'));
     mapRef.current = map;
     return () => {
+      resized.disconnect();
+      box.removeEventListener('pointerdown', onTouch);
+      box.removeEventListener('wheel', onTouch);
       map.remove();
       mapRef.current = null;
     };

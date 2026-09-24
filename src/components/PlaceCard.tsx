@@ -1,4 +1,5 @@
 import { Icon } from './Icon';
+import { portionAt } from '../data/boundary';
 import type { GpsState } from '../lib/gps';
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 export function PlaceCard({ gps, retry, camp, camps, onCamp }: Props) {
   const status =
     gps.status === 'found'
-      ? `GPS found · accurate to ${gps.pos.acc} m`
+      ? `GPS found · accurate to ${gps.pos.acc} m · ${portionAt(gps.pos.lat, gps.pos.lng)?.name ?? 'outside the farm'}`
       : gps.status === 'finding'
         ? 'Finding your position'
         : `${gps.message}. The record still saves.`;
