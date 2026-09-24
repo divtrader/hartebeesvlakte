@@ -1,0 +1,181 @@
+import { useEffect, useState, type ChangeEvent } from 'react';
+import { Icon } from '../components/Icon';
+import { Logo } from '../components/Logo';
+import { setSetting, useRecords, useSetting } from '../db';
+import { DEFAULT_CAMPS, DEFAULT_PEOPLE, FARM } from '../data/farm';
+import { downloadBlob, exportBackup, importBackup, recordsToCsv } from '../lib/export';
+import { plural, toDateInput } from '../lib/format';
+import { toast } from '../lib/toast';
+
+function EditableList({ items, onChange, addLabel, placeholder }: { items: string[]; onChange: (items: string[]) => void; addLabel: string; placeholder: string }) {
+  const [value, setValue] = useState('');
+  function add() {
+    const clean = value.trim();
+    if (!clean || items.includes(clean)) return;
+    onChange([...items, clean]);
+    setValue('');
+  }
+  return (
+    <div className="editable">
+      {items.map((item) => (
+        <div key={item} className="editable__row">
+          <span>{item}</span>
+          <button
+            type="button"
+            className="icon-btn icon-btn--plain"
+            aria-label={`Remove ${item}`}
+            onClick={() => window.confirm(`Remove ${item} from the list? Old records keep it.`) && onChange(items.filter((i) => i !== item))}
+          >
+            <Icon name="trash" size={18} />
+          </button>
+        </div>
+      ))}
+      <form
+        className="editable__add"
+        onSubmit={(e) => {
+          e.preventDefault();
+          add();
+        }}
+      >
+        <input className="input" placeholder={placeholder} aria-label={addLabel} value={value} onChange={(e) => setValue(e.target.value)} />
+        <button type="submit" className="btn btn--small">
+          <Icon name="plus" size={18} />
+          Add
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function useStorageInfo() {
+  const [info, setInfo] = useState<{ usedMb?: number; persisted?: boolean }>({});
+  useEffect(() => {
+    void (async () => {
+      const estimate = await navigator.storage?.estimate?.().catch(() => undefined);
+      const persisted = await navigator.storage?.persisted?.().catch(() => undefined);
+      setInfo({ usedMb: estimate?.usage !== undefined ? Math.round((estimate.usage / 1_048_576) * 10) / 10 : undefined, persisted });
+    })();
+  }, []);
+  return info;
+}
+
+export function Settings() {
+  const recorder = useSetting<string>('recorder', '');
+  const people = useSetting<string[]>('people', DEFAULT_PEOPLE);
+  const camps = useSetting<string[]>('camps', DEFAULT_CAMPS);
+  const records = useRecords();
+  const storage = useStorageInfo();
+  const [busy, setBusy] = useState(false);
+
+  async function backup() {
+    setBusy(true);
+    try {
+      downloadBlob(await exportBackup(), `veldboek-backup-${toDateInput(Date.now())}.json`);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function restore(e: ChangeEvent<HTMLInputElement>) {
+    const input = e.currentTarget;
+    const file = input.files?.[0];
+    input.value = '';
+    if (!file) return;
+    setBusy(true);
+    try {
+      const result = await importBackup(file);
+      toast(`Added ${plural(result.records, 'record')} and ${plural(result.photos, 'photo')}`);
+    } catch (error) {
+      toast(error instanceof Error ? error.message : 'Could not read the backup');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function spreadsheet() {
+    downloadBlob(new Blob(['﻿', recordsToCsv(records ?? [])], { type: 'text/csv;charset=utf-8' }), `veldboek-records-${toDateInput(Date.now())}.csv`);
+  }
+
+  return (
+    <>
+      <header className="page-head">
+        <h1>Settings</h1>
+      </header>
+
+      <section className="card settings-block">
+        <h2>Who is recording on this device</h2>
+        <p className="muted">Every record shows who made it.</p>
+        <div className="chips" role="group" aria-label="Recording as">
+          {people.map((p) => (
+            <button key={p} type="button" className="chip" aria-pressed={recorder === p} onClick={() => setSetting('recorder', p)}>
+              {p}
+            </button>
+          ))}
+        </div>
+        <details>
+          <summary>Edit the list of people</summary>
+          <EditableList items={people} onChange={(next) => setSetting('people', next)} addLabel="Add a person" placeholder="Name" />
+        </details>
+      </section>
+
+      <section className="card settings-block">
+        <h2>Camps</h2>
+        <p className="muted">These are placeholders until the real kampe are entered. Removing one does not change old records.</p>
+        <EditableList items={camps} onChange={(next) => setSetting('camps', next)} addLabel="Add a camp" placeholder="Camp name" />
+      </section>
+
+      <section className="card settings-block">
+        <h2>Backup and spreadsheet</h2>
+        <p className="muted">
+          Records are stored on this device only, until syncing between phones is added. Download a backup now and then, and restore it on another
+          device to copy records across.
+        </p>
+        <div className="settings-actions">
+          <button type="button" className="btn" onClick={backup} disabled={busy}>
+            <Icon name="download" size={20} />
+            Download backup
+          </button>
+          <label className="btn">
+            <Icon name="upload" size={20} />
+            Restore a backup
+            <input type="file" accept="application/json,.json" className="visually-hidden" onChange={restore} disabled={busy} />
+          </label>
+          <button type="button" className="btn" onClick={spreadsheet} disabled={!records?.length}>
+            <Icon name="list" size={20} />
+            Spreadsheet (CSV)
+          </button>
+        </div>
+      </section>
+
+      <section className="card settings-block">
+        <h2>Install on iPhone</h2>
+        <ol className="steps">
+          <li>
+            Open this page in <b>Safari</b>.
+          </li>
+          <li>
+            Tap <b>Share</b> (the square with the arrow).
+          </li>
+          <li>
+            Tap <b>Add to Home Screen</b>, then <b>Add</b>.
+          </li>
+        </ol>
+        <p className="muted">The app then opens full screen, works without signal, and iPhone keeps its records safe.</p>
+      </section>
+
+      <section className="card settings-block about">
+        <Logo size={56} />
+        <div>
+          <strong>
+            {FARM.name} Veldboek {__APP_VERSION__}
+          </strong>
+          <span className="muted">
+            {plural(records?.length ?? 0, 'record')} on this device
+            {storage.usedMb !== undefined ? ` · ${storage.usedMb} MB used` : ''}
+            {storage.persisted ? ' · protected storage' : ''}
+          </span>
+        </div>
+      </section>
+    </>
+  );
+}
