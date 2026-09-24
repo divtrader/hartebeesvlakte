@@ -1,0 +1,890 @@
+{
+  "kudu": {
+    "title": "Greater kudu",
+    "url": "https://en.wikipedia.org/wiki/Greater_kudu",
+    "extract": "The greater kudu is a large woodland antelope, found throughout eastern and southern Africa. Despite occupying such widespread territory, they are sparsely populated in most areas due to declining habitat, deforestation, and poaching. The greater kudu is one of two species commonly known as kudu, the other being the lesser kudu, T. imberbis.",
+    "photo": {
+      "credit": "L0k1m0nk33 at English Wikipedia",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source": "https://commons.wikimedia.org/wiki/File:Male_greater_kudu.jpg"
+    }
+  },
+  "red-hartebeest": {
+    "title": "Red hartebeest",
+    "url": "https://en.wikipedia.org/wiki/Red_hartebeest",
+    "extract": "The red hartebeest, also called the Cape hartebeest or Caama, is a subspecies of the hartebeest found in Southern Africa. More than 130,000 individuals live in the wild. The red hartebeest is closely related to the tsessebe and the topi.",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:2011-Red-Hartebeest.jpg"
+    }
+  },
+  "klipspringer": {
+    "title": "Klipspringer",
+    "url": "https://en.wikipedia.org/wiki/Klipspringer",
+    "extract": "The klipspringer is a small antelope found in eastern and southern Africa. The sole member of its genus and subfamily/tribe, the klipspringer was first described by German zoologist Eberhard August Wilhelm von Zimmermann in 1783. The klipspringer is a small, sturdy antelope; it reaches 43–60 centimetres at the shoulder and weighs from 8 to 18 kilograms.",
+    "photo": {
+      "credit": "Charles J. Sharp",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Maasai_klipspringer_(Oreotragus_oreotragus_schillingsi)_male_Serengeti.jpg"
+    }
+  },
+  "grey-rhebok": {
+    "title": "Grey rhebok",
+    "url": "https://en.wikipedia.org/wiki/Grey_rhebok",
+    "extract": "The grey rhebok, locally known as the vaalribbok in Afrikaans, is a species of antelope native to South Africa, Lesotho, and Eswatini. The specific name capreolus is Latin for 'little goat'.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Grey_Rhebok_(Pelea_capreolus)_male_at_Karoo_NP,_Western_Cape,_South_Africa.jpg"
+    }
+  },
+  "mountain-reedbuck": {
+    "title": "Mountain reedbuck",
+    "url": "https://en.wikipedia.org/wiki/Mountain_reedbuck",
+    "extract": "The mountain reedbuck is an antelope found in mountainous areas of much of sub-Saharan Africa.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Southern_Mountain_Reedbuck_(Redunca_fulvorufula)_(33043612376).jpg"
+    }
+  },
+  "common-duiker": {
+    "title": "Common duiker",
+    "url": "https://en.wikipedia.org/wiki/Common_duiker",
+    "extract": "The common duiker, also known as the gray duiker or bush duiker, is a small antelope and the only member of the genus Sylvicapra. This species is found everywhere in Africa south of the Sahara, excluding the Horn of Africa and the rainforests of the central and western parts of the continent.",
+    "photo": {
+      "credit": "Farid AMADOU BAHLEMAN",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:C%C3%A9phalophe_de_grimm,_crop.jpg"
+    }
+  },
+  "steenbok": {
+    "title": "Steenbok",
+    "url": "https://en.wikipedia.org/wiki/Steenbok",
+    "extract": "The steenbok is a common small antelope of southern and eastern Africa. It is sometimes known as the steinbuck or steinbok.",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Raphicerus_campestris_male_(Etosha,_2012).jpg"
+    }
+  },
+  "cape-grysbok": {
+    "title": "Cape grysbok",
+    "url": "https://en.wikipedia.org/wiki/Cape_grysbok",
+    "extract": "The Cape or southern grysbok is a small antelope that is endemic to the Western Cape region of South Africa between Albany and the Cederberg mountains.",
+    "photo": {
+      "credit": "Jimfbleak, Jimfbleak at English Wikipedia",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source": "https://commons.wikimedia.org/wiki/File:Southafrica-capegrysbok.jpg"
+    }
+  },
+  "springbok": {
+    "title": "Springbok",
+    "url": "https://en.wikipedia.org/wiki/Springbok",
+    "extract": "The springbok or springbuck is an antelope found mainly in south and southwest Africa. The sole living member of the genus Antidorcas, this bovid was first described by the German zoologist Eberhard August Wilhelm von Zimmermann in 1780. Three subspecies are identified.",
+    "photo": {
+      "credit": "Giles Laurent",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:174_Male_Springbok_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg"
+    }
+  },
+  "gemsbok": {
+    "title": "Gemsbok",
+    "url": "https://en.wikipedia.org/wiki/Gemsbok",
+    "extract": "The gemsbok, or South African oryx, is a large antelope in the genus Oryx. It is endemic to the dry and barren regions of Botswana, Namibia, South Africa and Zimbabwe, mainly inhabiting the Kalahari and Namib Deserts, areas in which it is supremely adapted for survival.",
+    "photo": {
+      "credit": "Charles J. Sharp",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gemsbok_(Oryx_gazella)_male.jpg"
+    }
+  },
+  "eland": {
+    "title": "Common eland",
+    "url": "https://en.wikipedia.org/wiki/Common_eland",
+    "extract": "The common eland, also known as the southern eland or eland antelope, is a large savannah and plains antelope found in East and Southern Africa.2 ft) tall at the shoulder and can weigh up to 942 kg (2,077 lb) with a typical range of 500–600 kg (1,100–1,300 lb).6 ft) tall and weigh 340–445 kg (750–981 lb).",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg"
+    }
+  },
+  "cape-mountain-zebra": {
+    "title": "Cape mountain zebra",
+    "url": "https://en.wikipedia.org/wiki/Cape_mountain_zebra",
+    "extract": "The Cape mountain zebra is a nominate subspecies of mountain zebra that occurs in certain mountainous regions of the Western and Eastern Cape provinces of South Africa.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Cape_Mountain_Zebra_(Equus_zebra_zebra)_(31707282834).jpg"
+    }
+  },
+  "bushbuck": {
+    "title": "Cape bushbuck",
+    "url": "https://en.wikipedia.org/wiki/Cape_bushbuck",
+    "extract": "The Cape bushbuck, also known as imbabala and southern bushbuck, is a common, medium-sized bushland-dwelling, and a widespread species of antelope in sub-Saharan Africa. It is found in a wide range of habitats, such as rain forests, montane forests, forest-savanna mosaic, savanna, bushveld, and woodland.",
+    "photo": {
+      "credit": "Steve Garvie from Dunfermline, Fife, Scotland",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Flickr_-_Rainbirder_-_Imbabala_Bushbuck_(Tragelaphus_sylvaticus).jpg"
+    }
+  },
+  "chacma-baboon": {
+    "title": "Chacma baboon",
+    "url": "https://en.wikipedia.org/wiki/Chacma_baboon",
+    "extract": "The chacma baboon, also known as the Cape baboon, is, like all other baboons, from the Old World monkey family. It is one of the largest of all monkeys. Located primarily in southern Africa, the chacma baboon has a wide variety of social behaviours, including a dominance hierarchy, collective foraging, adoption of young by females, and friendship pairings.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Chacma_Baboon_(Papio_ursinus)_(16824823063).jpg"
+    }
+  },
+  "vervet-monkey": {
+    "title": "Vervet monkey",
+    "url": "https://en.wikipedia.org/wiki/Vervet_monkey",
+    "extract": "The vervet monkey, or simply vervet, is an Old World monkey of the family Cercopithecidae native to Africa. The term \"vervet\" is also used to refer to all the members of the genus Chlorocebus. The five distinct subspecies can be found mostly throughout Southern Africa, as well as some of the eastern countries.",
+    "photo": {
+      "credit": "Diego Delso",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Cercopiteco_verde_(Chlorocebus_pygerythrus),_parque_nacional_del_lago_Nakuru,_Kenia,_2024-05-18,_DD_77.jpg"
+    }
+  },
+  "ostrich": {
+    "title": "Common ostrich",
+    "url": "https://en.wikipedia.org/wiki/Common_ostrich",
+    "extract": "The common ostrich, or simply ostrich, is a species of flightless bird native to certain areas of Africa and is the largest living species of bird. The common ostrich is one of two extant species of ostriches, the only living members of the genus Struthio in the ratite group of birds.",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Struthio_camelus_-_Etosha_2014_(3).jpg"
+    }
+  },
+  "karoo-korhaan": {
+    "title": "Karoo korhaan",
+    "url": "https://en.wikipedia.org/wiki/Karoo_korhaan",
+    "extract": "The karoo korhaan, also known as karoo bustard, is a species of bird in the bustard family, Otididae, from Southern Africa. There are two subspecies, the nominate race, from south-eastern South Africa, and H. v. namaqua, from north-western South Africa and southern Namibia.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Karoo_Korhaan_(Eupodotis_vigorsii)_(31800692824).jpg"
+    }
+  },
+  "ludwigs-bustard": {
+    "title": "Ludwig's bustard",
+    "url": "https://en.wikipedia.org/wiki/Ludwig's_bustard",
+    "extract": "Ludwig's bustard is a species of bird in the bustard family, and named after Baron von Ludwig. It is a medium-to-large sized species.",
+    "photo": {
+      "credit": "Hans Hillewaert",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Neotis_ludwigii.jpg"
+    }
+  },
+  "verreaux-eagle": {
+    "title": "Verreaux's eagle",
+    "url": "https://en.wikipedia.org/wiki/Verreaux's_eagle",
+    "extract": "Verreaux's eagle is a large, mostly African, bird of prey. It is also called the black eagle, especially in southern Africa, not to be confused with the black eagle of south and southeast Asia. The Verreaux's eagle lives in hilly and mountainous regions of southern and eastern Africa, and very locally in the Middle East.",
+    "photo": {
+      "credit": "Derek Keats from Johannesburg, South Africa",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Verreaux%27s_Eagle_(Black_Eagle),_Aquila_verreauxii,_at_Walter_Sisulu_National_Botanical_Garden,_Gauteng,_South_Africa_(28825027073).jpg"
+    }
+  },
+  "jackal-buzzard": {
+    "title": "Jackal buzzard",
+    "url": "https://en.wikipedia.org/wiki/Jackal_buzzard",
+    "extract": "The jackal buzzard is a fairly large African bird of prey. The taxonomy of this species has caused some confusion in the past and it almost certainly belongs in a species complex with other African Buteo species. Some taxonomists have considered this species, the Archer's buzzard, and the augur buzzard to be the same superspecies.",
+    "photo": {
+      "credit": "Alan Manson",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Buteo_rufofuscus_-Itala_Game_Reserve,_KwaZulu-Natal,_South_Africa_-flying-6.jpg"
+    }
+  },
+  "pale-chanting-goshawk": {
+    "title": "Pale chanting goshawk",
+    "url": "https://en.wikipedia.org/wiki/Pale_chanting_goshawk",
+    "extract": "The pale chanting goshawk is a bird of prey in the family Accipitridae. This hawk breeds in southern Africa and is a resident species of dry, open semi-desert with 75 cm or less annual rainfall. It is commonly seen perched on roadside telephone poles.",
+    "photo": {
+      "credit": "Hans Stieglitz",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Melierax_canorus-01.jpg"
+    }
+  },
+  "rock-kestrel": {
+    "title": "Rock kestrel",
+    "url": "https://en.wikipedia.org/wiki/Rock_kestrel",
+    "extract": "The rock kestrel is a bird of prey species belonging to the kestrel group of the falcon family Falconidae. It was previously considered a subspecies of the common kestrel.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Rock_Kestrel_(Falco_rupicolus),_Mountain_Zebra_NP,_South_Africa.jpg"
+    }
+  },
+  "secretarybird": {
+    "title": "Secretarybird",
+    "url": "https://en.wikipedia.org/wiki/Secretarybird",
+    "extract": "The secretarybird or secretary bird is a large bird of prey that is endemic to Africa. It is mostly terrestrial, spending most of its time on the ground, and is usually found in the open grasslands and savanna of the sub-Saharan region. John Frederick Miller described the species in 1779.",
+    "photo": {
+      "credit": "Sumeet Moghe",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Secretary_bird_Mara_for_WC.jpg"
+    }
+  },
+  "blue-crane": {
+    "title": "Blue crane",
+    "url": "https://en.wikipedia.org/wiki/Blue_crane",
+    "extract": "The blue crane, also known as the Stanley crane and the paradise crane, is the national bird of South Africa. The species is listed as Vulnerable by the IUCN.",
+    "photo": {
+      "credit": "Ron Knight from Seaford, East Sussex, United Kingdom",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Grus_paradisea_Etosha_1.jpg"
+    }
+  },
+  "spotted-eagle-owl": {
+    "title": "Spotted eagle-owl",
+    "url": "https://en.wikipedia.org/wiki/Spotted_eagle-owl",
+    "extract": "The spotted eagle-owl, also known as the African spotted eagle-owl and the African eagle-owl, is a medium-sized species of owl, one of the smallest of the eagle owls. Its length is 45 cm (18 in) and its weight is from 454 to 907 grams. It has a 100 to 140 cm wingspan. The facial disk is off-white to pale ochre and the eyes are yellow.",
+    "photo": {
+      "credit": "Charles J. Sharp",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Spotted_eagle_owl_bubo_africanus.jpg"
+    }
+  },
+  "european-bee-eater": {
+    "title": "European bee-eater",
+    "url": "https://en.wikipedia.org/wiki/European_bee-eater",
+    "extract": "The European bee-eater is a bird species in the bee-eater family, Meropidae. It has the largest range of any bee-eater species, breeding in southern and central Europe, northern and southern Africa, and western Asia. Except for the resident southern African population, the species is strongly migratory, wintering in tropical Africa.",
+    "photo": {
+      "credit": "Andy Morffew from Itchen Abbas, Hampshire, UK",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bee-eater_(19270331108).jpg"
+    }
+  },
+  "diederik-cuckoo": {
+    "title": "Diederik cuckoo",
+    "url": "https://en.wikipedia.org/wiki/Diederik_cuckoo",
+    "extract": "The diederik cuckoo, formerly dideric cuckoo or didric cuckoo, is a member of the cuckoo family of birds, Cuculidae, which also includes the roadrunners and the anis.",
+    "photo": {
+      "credit": "Johann Grobbelaar of GROB Images",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Chrysococcyx_caprius,_a,_Johann_Grobbelaar.jpg"
+    }
+  },
+  "barn-swallow": {
+    "title": "Barn swallow",
+    "url": "https://en.wikipedia.org/wiki/Barn_swallow",
+    "extract": "The barn swallow is the most widespread species of swallow in the world, occurring on all continents, with vagrants reported even in Antarctica. It is a distinctive passerine bird with blue upperparts and a long, deeply forked tail.",
+    "photo": {
+      "credit": "Andreas Trepte",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:Rauchschwalbe_Hirundo_rustica.jpg"
+    }
+  },
+  "malachite-sunbird": {
+    "title": "Malachite sunbird",
+    "url": "https://en.wikipedia.org/wiki/Malachite_sunbird",
+    "extract": "The malachite sunbird is a small nectarivorous bird found from the highlands of Ethiopia southwards to South Africa. They pollinate many flowering plants, particularly those with long corolla tubes, in the Fynbos.",
+    "photo": {
+      "credit": "Gouldingken",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Malachite_Sunbird_on_Leucospermum.jpg"
+    }
+  },
+  "southern-double-collared-sunbird": {
+    "title": "Southern double-collared sunbird",
+    "url": "https://en.wikipedia.org/wiki/Southern_double-collared_sunbird",
+    "extract": "The southern double-collared sunbird or lesser double-collared sunbird is a small passerine bird which breeds in southern Africa. It is mainly resident, but partially migratory in the north-east of its range.",
+    "photo": {
+      "credit": "Mikegoulding",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Lesser_Double-collared_sunbird.jpg"
+    }
+  },
+  "cape-bunting": {
+    "title": "Cape bunting",
+    "url": "https://en.wikipedia.org/wiki/Cape_bunting",
+    "extract": "The Cape bunting is a passerine bird in the bunting family Emberizidae.",
+    "photo": {
+      "credit": "https://www.flickr.com/photos/dkeats",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Cape_Bunting,_Emberiza_capensis_at_Suikerbosrand_Nature_Reserve,_Gauteng,_South_Africa.jpg"
+    }
+  },
+  "karoo-prinia": {
+    "title": "Karoo prinia",
+    "url": "https://en.wikipedia.org/wiki/Karoo_prinia",
+    "extract": "The Karoo prinia or spotted prinia is a small passerine bird. It is a resident breeder in South Africa, Lesotho and far southern Namibia.",
+    "photo": {
+      "credit": "Robert Muckley from Ascot, UK",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Karoo_(Spotted)_Prinia_(10537833606).jpg"
+    }
+  },
+  "bokmakierie": {
+    "title": "Bokmakierie",
+    "url": "https://en.wikipedia.org/wiki/Bokmakierie",
+    "extract": "The bokmakierie is a bushshrike. This family of passerine birds is closely related to the true shrikes in the family Laniidae, and was once included in that group. This species is endemic to southern Africa, mainly in South Africa and Namibia, with an isolated population in the mountains of eastern Zimbabwe and western Mozambique.",
+    "photo": {
+      "credit": "Derek Keats from Johannesburg, South Africa",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bokmakierie,_Telophorus_zeylonus,_at_Walter_Sisulu_National_Botanical_Garden,_South_Africa_(14511575139).jpg"
+    }
+  },
+  "southern-fiscal": {
+    "title": "Southern fiscal",
+    "url": "https://en.wikipedia.org/wiki/Southern_fiscal",
+    "extract": "The southern fiscal or fiscal shrike is a member of the shrike family found through most of southern Africa. It is also sometimes named jackie hangman or butcher bird due to its habit of impaling its prey on acacia thorns to store the food for later consumption. It was previously lumped together with the northern fiscal.",
+    "photo": {
+      "credit": "Charles J. Sharp",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Common_fiscal_(Lanius_collaris_subcoronatus).jpg"
+    }
+  },
+  "cape-robin-chat": {
+    "title": "Cape robin-chat",
+    "url": "https://en.wikipedia.org/wiki/Cape_robin-chat",
+    "extract": "The Cape robin-chat is a small passerine bird of the Old World flycatcher family Muscicapidae. It has a disjunct range from South Sudan to South Africa.",
+    "photo": {
+      "credit": "Alan Manson",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Cape_Robin-Chat_(Cossypha_caffra)2.jpg"
+    }
+  },
+  "karoo-scrub-robin": {
+    "title": "Karoo scrub robin",
+    "url": "https://en.wikipedia.org/wiki/Karoo_scrub_robin",
+    "extract": "The Karoo scrub robin or Karoo robin is a species of bird in the family Muscicapidae. It is found in Lesotho, Namibia, and South Africa. Its natural habitats are dry shrubland and Mediterranean-type shrubby vegetation. This species was formerly placed in the genus Cercotrichas.",
+    "photo": {
+      "credit": "Alan Manson",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Cercotrichas_coryphoeus,_Namaqua_National_Park,_South_Africa.jpg"
+    }
+  },
+  "familiar-chat": {
+    "title": "Familiar chat",
+    "url": "https://en.wikipedia.org/wiki/Familiar_chat",
+    "extract": "The familiar chat is a small passerine bird of the Old World flycatcher family Muscicapidae. It is a common resident breeder in Africa south of the Sahara in rocky and mountainous habitat and around human habitation.",
+    "photo": {
+      "credit": "Photograph by Mike Peel (www.mikepeel.net).",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Table_Mountain,_Cape_Town_(MP)_2018_221,_crop.jpg"
+    }
+  },
+  "mountain-wheatear": {
+    "title": "Mountain chat",
+    "url": "https://en.wikipedia.org/wiki/Mountain_chat",
+    "extract": "The mountain chat or mountain wheatear is a small insectivorous passerine bird that is endemic to southwestern Africa.",
+    "photo": {
+      "credit": "JMK",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Oenanthe_monticola,_manlik,_a,_naby_Tierpoort,_Pta.jpg"
+    }
+  },
+  "cape-weaver": {
+    "title": "Cape weaver",
+    "url": "https://en.wikipedia.org/wiki/Cape_weaver",
+    "extract": "The Cape weaver is a species of bird in the weaver family, Ploceidae, found in southern Africa.",
+    "photo": {
+      "credit": "Derek Keats from South Africa",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ploceus_capensis_-Johannesburg,_South_Africa_-male-8.jpg"
+    }
+  },
+  "namaqua-dove": {
+    "title": "Namaqua dove",
+    "url": "https://en.wikipedia.org/wiki/Namaqua_dove",
+    "extract": "The Namaqua dove is a very small species of pigeon. It is the only species in the genus Oena. It is found over much of Sub-Saharan Africa as well as Arabia and Madagascar.",
+    "photo": {
+      "credit": "Lip Kee from Singapore, Republic of Singapore",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Oena_capensis_-near_Kambi_ya_Tembo,_Arusha,_Tanzania-8,_crop.jpg"
+    }
+  },
+  "speckled-pigeon": {
+    "title": "Speckled pigeon",
+    "url": "https://en.wikipedia.org/wiki/Speckled_pigeon",
+    "extract": "The speckled pigeon, also known as the African rock pigeon or Guinea pigeon, is a pigeon that is a resident breeding bird in much of Africa south of the Sahara. It is a common and widespread species in open habitats over much of its range, although there are sizable gaps in its distribution.",
+    "photo": {
+      "credit": "peterichman from York, Yorkshire",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Specked_Pigeon_...Gambia_(32709456610).jpg"
+    }
+  },
+  "cape-turtle-dove": {
+    "title": "Ring-necked dove",
+    "url": "https://en.wikipedia.org/wiki/Ring-necked_dove",
+    "extract": "The ring-necked dove, also known as the Cape turtle dove, half-collared dove, or the Cape Lager is a widespread and often abundant dove species in East and southern Africa. It is a mostly sedentary bird, found in a variety of open habitats. Within range, its penetrating and rhythmic, three-syllabled crooning is a familiar sound at any time of the year.",
+    "photo": {
+      "credit": "Charles J. Sharp",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ring-necked_dove_(Streptopelia_capicola_damarensis).jpg"
+    }
+  },
+  "pied-crow": {
+    "title": "Pied crow",
+    "url": "https://en.wikipedia.org/wiki/Pied_crow",
+    "extract": "The pied crow is a widely distributed African bird species in the crow genus of the family Corvidae.",
+    "photo": {
+      "credit": "Frank Vassen from Brussels, Belgium",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Corvus_albus_-Etosha_National_Park,_Namibia-8.jpg"
+    }
+  },
+  "white-necked-raven": {
+    "title": "White-necked raven",
+    "url": "https://en.wikipedia.org/wiki/White-necked_raven",
+    "extract": "The white-necked raven, also known as the collared raven, is a species of raven native to eastern and southern Africa. It is somewhat smaller than the common raven or its nearest relative, the thick-billed raven C. crassirostris.",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:2009-white-necked-raven.jpg"
+    }
+  },
+  "egyptian-goose": {
+    "title": "Egyptian goose",
+    "url": "https://en.wikipedia.org/wiki/Egyptian_goose",
+    "extract": "The Egyptian goose is an African member of the Anatidae family including ducks, geese, and swans. Because of its popularity chiefly as an ornamental bird, the species has also been introduced to Europe, the United States, and elsewhere outside its natural range. Egyptian geese were regularly represented in ancient Egyptian art.",
+    "photo": {
+      "credit": "Charles J. Sharp",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Egyptian_goose_(Alopochen_aegyptiaca)_London.jpg"
+    }
+  },
+  "blacksmith-lapwing": {
+    "title": "Blacksmith lapwing",
+    "url": "https://en.wikipedia.org/wiki/Blacksmith_lapwing",
+    "extract": "The blacksmith lapwing or blacksmith plover is a lapwing species that occurs commonly from Kenya through central Tanzania to southern and southwestern Africa. The vernacular name derives from the repeated metallic 'tink, tink, tink' alarm call, which suggests a blacksmith's hammer striking an anvil.",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Vanellus_armatus_-_Etosha_2014.jpg"
+    }
+  },
+  "hadeda-ibis": {
+    "title": "Hadada ibis",
+    "url": "https://en.wikipedia.org/wiki/Hadada_ibis",
+    "extract": "The hadada ibis or hadeda is an ibis native to Sub-Saharan Africa. It is named for its loud three to four note calls uttered in flight especially in the mornings and evenings when they fly out or return to their roost trees.",
+    "photo": {
+      "credit": "Diego Delso",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ibis_hadada_(Bostrychia_hagedash),_parque_nacional_de_Tarangire,_Tanzania,_2024-05-24,_DD_23.jpg"
+    }
+  },
+  "leopard": {
+    "title": "Leopard",
+    "url": "https://en.wikipedia.org/wiki/Leopard",
+    "extract": "The leopard is one of the five extant cat species in the genus Panthera. It has a pale yellowish to dark golden fur with dark spots grouped in rosettes. Its body is slender and muscular, reaching a length of 92–183 cm (36–72 in) with a 66–102 cm (26–40 in) long tail and a shoulder height of 60–70 cm (24–28 in).5–43 kg (45–95 lb).",
+    "photo": {
+      "credit": "Sumeet Moghe",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:African_leopard_male_(cropped).jpg"
+    }
+  },
+  "caracal": {
+    "title": "Caracal",
+    "url": "https://en.wikipedia.org/wiki/Caracal",
+    "extract": "The caracal is a wild cat native to Africa, the Middle East, Central Asia, and arid areas of Pakistan and northwestern India. It is characterised by a robust build, long legs, a short face, long tufted ears, relatively short tail, and long canine teeth.",
+    "photo": {
+      "credit": "Derek Keats",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Caracal_on_the_road,_early_morning_in_Kgalagadi_(36173878220)_(cropped).jpg"
+    }
+  },
+  "african-wildcat": {
+    "title": "African wildcat",
+    "url": "https://en.wikipedia.org/wiki/African_wildcat",
+    "extract": "The African wildcat is a small wildcat species with sandy grey fur, pale vertical stripes on the sides and around the face. It is native to Africa, West and Central Asia, and is distributed to Rajasthan in India and Xinjiang in China. It inhabits a broad variety of landscapes ranging from deserts to savannas, shrublands and grasslands.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Southern_African_Wildcat_(Felis_sylvestris_cafra)_female_..._(captive_specimen)_(39789072173).jpg"
+    }
+  },
+  "black-backed-jackal": {
+    "title": "Black-backed jackal",
+    "url": "https://en.wikipedia.org/wiki/Black-backed_jackal",
+    "extract": "The black-backed jackal is a medium-sized canine native to eastern and southern Africa. These regions are separated by roughly 900 km (560 mi).",
+    "photo": {
+      "credit": "Giles Laurent",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:135_Black-backed_jackal_hunting_for_food_at_Cape_cross_Photo_by_Giles_Laurent.jpg"
+    }
+  },
+  "cape-fox": {
+    "title": "Cape fox",
+    "url": "https://en.wikipedia.org/wiki/Cape_fox",
+    "extract": "The Cape fox, also called the asse, cama fox or the silver-backed fox, is a small species of fox, native to southern Africa. It is the only \"true fox\" occurring in sub-Saharan Africa, and it retains primitive characteristics of Vulpes because it diverged early in the evolutionary history of the group.",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Vulpes_chama_(Etosha).jpg"
+    }
+  },
+  "bat-eared-fox": {
+    "title": "Bat-eared fox",
+    "url": "https://en.wikipedia.org/wiki/Bat-eared_fox",
+    "extract": "The bat-eared fox is a species of fox found on the African savanna. It is the only extant species of the genus Otocyon, and is the sister species to all other members of the tribe Vulpini, not genetically being a true fox. Fossil records indicate this canid first appeared during the middle Pleistocene.",
+    "photo": {
+      "credit": "Yathin S Krishnappa",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Otocyon_megalotis_-_Etosha_2014.jpg"
+    }
+  },
+  "aardwolf": {
+    "title": "Aardwolf",
+    "url": "https://en.wikipedia.org/wiki/Aardwolf",
+    "extract": "The aardwolf is an insectivorous hyaenid species, native to East and Southern Africa. Its name means \"earth-wolf\" in Afrikaans and Dutch. It is also called the maanhaarjakkals, termite-eating hyena and civet hyena, based on its habit of secreting substances from its anal gland, a characteristic shared with the African civet.",
+    "photo": {
+      "credit": "Stefan Haag",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Aardwolf,_Buffalo_Springs_National_Park,_Kenya_1_(cropped).jpg"
+    }
+  },
+  "honey-badger": {
+    "title": "Honey badger",
+    "url": "https://en.wikipedia.org/wiki/Honey_badger",
+    "extract": "The honey badger, also known as the ratel, is a mammal widely distributed across Africa, Southwest Asia, and the Indian subcontinent. It is the sole living representative of the Mellivorinae subfamily of the Mustelidae.",
+    "photo": {
+      "credit": "Sumeet Moghe",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Honey_Badger.jpg"
+    }
+  },
+  "rock-hyrax": {
+    "title": "Rock hyrax",
+    "url": "https://en.wikipedia.org/wiki/Rock_hyrax",
+    "extract": "The rock hyrax, also called dassie, Rickaz, Cape hyrax, rock rabbit, or coney, is a medium-sized terrestrial hyrax native to Africa and the Middle East. Commonly called the dassie in South Africa, it is one of the five living species of the order Hyracoidea, and the only one in the genus Procavia.0 lb) and have short ears.",
+    "photo": {
+      "credit": "Naturedata",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Rock_hyrax_Serengeti_National_Park.jpg"
+    }
+  },
+  "cape-porcupine": {
+    "title": "Cape porcupine",
+    "url": "https://en.wikipedia.org/wiki/Cape_porcupine",
+    "extract": "The Cape porcupine, Cape crested porcupine or South African porcupine, is a species of Old World porcupine native to central and southern Africa.",
+    "photo": {
+      "credit": "Steven Lek",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hystrix_africaeaustralis_Blijdorp_Rotterdam.JPG"
+    }
+  },
+  "scrub-hare": {
+    "title": "Cape scrub hare",
+    "url": "https://en.wikipedia.org/wiki/Cape_scrub_hare",
+    "extract": "The Cape scrub hare is a species of hare found in South Africa and Namibia. Although it is listed as a least concern species, the population has been declining and is expected to decline by 20% over the next 100 years, according to a 2004 report.",
+    "photo": {
+      "credit": "flowcomm",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Madikwe_Game_Reserve,_South_Africa_(31873568687).jpg"
+    }
+  },
+  "aardvark": {
+    "title": "Aardvark",
+    "url": "https://en.wikipedia.org/wiki/Aardvark",
+    "extract": "The aardvark is a medium-sized, burrowing, nocturnal mammal native to Africa. The aardvark is the only living member of the genus Orycteropus, the family Orycteropodidae and the order Tubulidentata.",
+    "photo": {
+      "credit": "Kelly Abram",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Orycteropus_afer_175359469.jpg"
+    }
+  },
+  "cape-grey-mongoose": {
+    "title": "Cape gray mongoose",
+    "url": "https://en.wikipedia.org/wiki/Cape_gray_mongoose",
+    "extract": "The Cape grey mongoose, also called the small grey mongoose, is a small mammal native to South Africa, Lesotho and southern Namibia.",
+    "photo": {
+      "credit": "Martin Kraft",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:MJK_25239_Galerella_pulverulenta.jpg"
+    }
+  },
+  "yellow-mongoose": {
+    "title": "Yellow mongoose",
+    "url": "https://en.wikipedia.org/wiki/Yellow_mongoose",
+    "extract": "The yellow mongoose, sometimes referred to as the red meerkat, is a member of the mongoose family.45 kg (1 lb) in weight and about 510 mm (20 in) in length. It lives in open country, semi-desert scrubland and grasslands in Angola, Botswana, South Africa, Namibia, and Zimbabwe. It is the only species in the genus Cynictis.",
+    "photo": {
+      "credit": "Giles Laurent",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:082_Yellow_mongoose_in_Khomas_Region_Photo_by_Giles_Laurent.jpg"
+    }
+  },
+  "meerkat": {
+    "title": "Meerkat",
+    "url": "https://en.wikipedia.org/wiki/Meerkat",
+    "extract": "The meerkat or suricate is a small mongoose found in southern Africa. It is characterised by a broad head, large eyes, a pointed snout, long legs, a thin tapering tail, and a brindled coat pattern.97 kg. The coat is light grey to yellowish-brown with alternate, poorly defined light and dark bands on the back.",
+    "photo": {
+      "credit": "Charles J. Sharp",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Meerkat_(Suricata_suricatta)_Tswalu.jpg"
+    }
+  },
+  "angulate-tortoise": {
+    "title": "Angulate tortoise",
+    "url": "https://en.wikipedia.org/wiki/Angulate_tortoise",
+    "extract": "The angulate tortoise is a species of tortoise found in dry areas and coastal scrub vegetation in South Africa. It is the only living member of the genus Chersina.",
+    "photo": {
+      "credit": "magriet b",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Angulate_tortoise_(Chersina_angulata)_1.jpg"
+    }
+  },
+  "leopard-tortoise": {
+    "title": "Leopard tortoise",
+    "url": "https://en.wikipedia.org/wiki/Leopard_tortoise",
+    "extract": "The leopard tortoise is a large and attractively marked tortoise found in the savannas of eastern and southern Africa, from Sudan to the southern Cape Province. It is the only extant member of the genus Stigmochelys, although in the past, it was commonly placed in Geochelone.",
+    "photo": {
+      "credit": "Bernard DUPONT from FRANCE",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Leopard_Tortoise_(Stigmochelys_pardalis)_(17331907085).jpg"
+    }
+  },
+  "tent-tortoise": {
+    "title": "Tent tortoise",
+    "url": "https://en.wikipedia.org/wiki/Tent_tortoise",
+    "extract": "The tent tortoise is a species of tortoise and one of three members of the genus, Psammobates. Known locally as the Karoo tent tortoise, this highly variable species is found in South Africa and Namibia.",
+    "photo": {
+      "credit": "Marius Burger",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Western_%27Namaqualand%27_tent_tortoise.jpg"
+    }
+  },
+  "puff-adder": {
+    "title": "Puff adder",
+    "url": "https://en.wikipedia.org/wiki/Puff_adder",
+    "extract": "The puff adder is a highly venomous viper species found in savannahs and grasslands from Morocco and western Arabia throughout Africa except for the Sahara and rainforest regions.",
+    "photo": {
+      "credit": "Danny S.",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bitis_arietans_by_Danny_S._1.JPG"
+    }
+  },
+  "cape-cobra": {
+    "title": "Cape cobra",
+    "url": "https://en.wikipedia.org/wiki/Cape_cobra",
+    "extract": "The Cape cobra, also called the yellow cobra, is a moderate-sized, highly venomous species of cobra inhabiting a wide variety of biomes across southern Africa, including arid savanna, fynbos, bushveld, desert, and semidesert regions.",
+    "photo": {
+      "credit": "Marius Burger",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Naja_nivea.jpg"
+    }
+  },
+  "boomslang": {
+    "title": "Boomslang",
+    "url": "https://en.wikipedia.org/wiki/Boomslang",
+    "extract": "The boomslang is a highly venomous snake in the family Colubridae. The species is native to Sub-Saharan Africa.",
+    "photo": {
+      "credit": "Miguel da Fonseca",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Dispholidus_typus_333317716.jpg"
+    }
+  },
+  "southern-rock-agama": {
+    "title": "Agama atra",
+    "url": "https://en.wikipedia.org/wiki/Agama_atra",
+    "extract": "The southern rock agama or southern African rock agama is a species of lizard from the family Agamidae that occurs in Southern Africa in Zambia, South Africa, Eswatini, Mozambique, Zimbabwe and Botswana. It lives in small colonies on rocky outcrops, and the males are very conspicuous for their bright blue heads.",
+    "photo": {
+      "credit": "magriet b",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Agama_atra_male.jpg"
+    }
+  },
+  "karoo-gold": {
+    "title": "Rhigozum obovatum",
+    "url": "https://en.wikipedia.org/wiki/Rhigozum_obovatum",
+    "extract": "Rhigozum obovatum, the Karoo gold, is a perennial shrub or tree that is part of the Bignoniaceae family. The species is native to Namibia, South Africa and Zimbabwe. In South Africa, the plant occurs in Limpopo, Mpumalanga, Northern Cape, Eastern Cape, the Free State and the Western Cape.",
+    "photo": {
+      "credit": "JonRichfield",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Rhigozum_obovatum_Bignoniaceae_Flower_5955s.jpg"
+    }
+  },
+  "vygies": {
+    "title": "Drosanthemum",
+    "url": "https://en.wikipedia.org/wiki/Drosanthemum",
+    "extract": "Drosanthemum is a genus of succulent plants in the ice plant family native to the winter-rainfall regions of southern Africa, including Namibia and the Cape Provinces and Free State of South Africa. Most species bear colorful flowers.",
+    "photo": {
+      "credit": "Winfried Bruenken (Amrum)",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:Drosanthemum_speciosumP1050020.JPG"
+    }
+  },
+  "botterblom": {
+    "title": "Gazania krebsiana",
+    "url": "https://en.wikipedia.org/wiki/Gazania_krebsiana",
+    "extract": "Gazania krebsiana is a species of flowering plant in family Asteraceae. It is a low-growing herbaceous perennial native to Southern Africa, ranging from Angola, Zambia, and Mozambique to South Africa. It is one of some 19 species of Gazania that are exclusively African and predominantly South African - only Gazania krebsiana subsp.",
+    "photo": {
+      "credit": "Paul venter",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gazania_krebsiana00.jpg"
+    }
+  },
+  "kapokbos": {
+    "title": "Eriocephalus",
+    "url": "https://en.wikipedia.org/wiki/Eriocephalus",
+    "extract": "Eriocephalus is a genus of African flowering plants in the daisy family.",
+    "photo": {
+      "credit": "Dinkum",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Eriocephalus_africanus.JPG"
+    }
+  },
+  "bitter-aloe": {
+    "title": "Aloe ferox",
+    "url": "https://en.wikipedia.org/wiki/Aloe_ferox",
+    "extract": "Aloe ferox, commonly known as bitter aloe, is a species of flowering plant in the family Asphodelaceae. This woody aloe is indigenous to southern Africa. It is one of several Aloe species used to make bitter aloes, a purgative medication, and also yields a non-bitter gel that can be used in cosmetics.",
+    "photo": {
+      "credit": "Gregorydavid",
+      "licence": "CC BY 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:Aloe_Ferox_between_Cofimvaba_and_Ngcobo.jpg"
+    }
+  },
+  "sweet-thorn": {
+    "title": "Vachellia karroo",
+    "url": "https://en.wikipedia.org/wiki/Vachellia_karroo",
+    "extract": "Vachellia karroo, commonly known as the sweet thorn, common acacia, Karoo thorn, Cape gum or cockspur thorn, is a species of Vachellia, in the Mimosa sub-family (Mimosoideae) of the Fabaceae or pea family, which is native to southern Africa from southern Angola east to Mozambique, and south to South Africa.",
+    "photo": {
+      "credit": "JMK",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Acacia_karroo,_habitus,_Jimmy_Aves_Park,_e.jpg"
+    }
+  },
+  "april-fool": {
+    "title": "Haemanthus coccineus",
+    "url": "https://en.wikipedia.org/wiki/Haemanthus_coccineus",
+    "extract": "Haemanthus coccineus, the blood flower, blood lily or paintbrush lily, is a species of flowering plant in the amaryllis family Amaryllidaceae, native to Southern Africa.",
+    "photo": {
+      "credit": "Peter coxhead",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Haemanthus_coccineus_150915-1.jpg"
+    }
+  },
+  "spekboom": {
+    "title": "Portulacaria afra",
+    "url": "https://en.wikipedia.org/wiki/Portulacaria_afra",
+    "extract": "Portulacaria afra is a small-leaved succulent plant found in South Africa. These succulents commonly have a reddish stem and green leaves, but a variegated cultivar is often seen in cultivation. They are simple to care for and make easy houseplants for a sunny location. In frost-free regions they may be used in outdoor landscaping.",
+    "photo": {
+      "credit": "Dinkum",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Portulacaria_afra_02.JPG"
+    }
+  },
+  "pigs-ear": {
+    "title": "Cotyledon orbiculata",
+    "url": "https://en.wikipedia.org/wiki/Cotyledon_orbiculata",
+    "extract": "Cotyledon orbiculata, commonly known as pig's ear or round-leafed navel-wort, is a South African succulent plant belonging to the genus Cotyledon.",
+    "photo": {
+      "credit": "Abu Shawka",
+      "licence": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Cotyledon_orbiculata_-_pigs_ear_-_Cape_Point_-_South_Africa_2.JPG"
+    }
+  },
+  "renosterbos": {
+    "title": "Dicerothamnus rhinocerotis",
+    "url": "https://en.wikipedia.org/wiki/Dicerothamnus_rhinocerotis",
+    "extract": "Dicerothamnus rhinocerotis, synonym Elytropappus rhinocerotis, is a species of flowering plants in the daisy family, Asteraceae, endemic to South Africa. It is a very obvious component of the unique Renosterveld Vegetation Type, which is named after this bush.",
+    "photo": {
+      "credit": "Abu Shawka",
+      "licence": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Elytropappus_rhinocerotis_-_Renosterbos_-_Cape_Town_1.jpg"
+    }
+  },
+  "karoo-boer-bean": {
+    "title": "Schotia afra",
+    "url": "https://en.wikipedia.org/wiki/Schotia_afra",
+    "extract": "Schotia afra is a flowering plant in the legume family, Fabaceae. It belongs to the subfamily Detarioideae. It occurs in Southern Africa. The genus was named for Richard van der Schot by Jacquin who was the director of the Imperial Gardens at Schönbrunn Palace, Vienna. Van der Schot was his head gardener.",
+    "photo": {
+      "credit": "NJR ZA",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Augrabies-Schotia_afra-003.jpg"
+    }
+  },
+  "guarri": {
+    "title": "Euclea",
+    "url": "https://en.wikipedia.org/wiki/Euclea",
+    "extract": "Euclea, from the Greek eukleia meaning \"glory and fame\", denotes a group of flowering plants in the Ebenaceae or ebony family. They were described as a genus by Linnaeus in 1774. The genus includes evergreen trees and shrubs, native to Africa, the Comoro Islands and Arabia.",
+    "photo": {
+      "credit": "Abu Shawka",
+      "licence": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Euclea_racemosa_-_Sea_Guarrie_Tree_-_flowers_6.JPG"
+    }
+  }
+}

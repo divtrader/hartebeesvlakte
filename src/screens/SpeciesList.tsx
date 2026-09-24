@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Icon } from '../components/Icon';
-import { GroupAvatar } from '../components/ui';
+import { SpeciesThumb } from '../components/ui';
 import { useRecords } from '../db';
 import { GROUPS, allSpecies, matchesSearch, type Group } from '../data/species';
 import { formatDay } from '../lib/format';
@@ -60,7 +60,7 @@ export function SpeciesList() {
           const info = seen.get(s.id);
           return (
             <a key={s.id} className="list-row" href={href(`species/${s.id}`)}>
-              <GroupAvatar group={s.group} />
+              <SpeciesThumb species={s} size={48} />
               <span className="list-row__text">
                 <span className="list-row__title">{s.en}</span>
                 <span className="list-row__meta">

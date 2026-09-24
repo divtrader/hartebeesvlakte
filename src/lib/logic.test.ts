@@ -5,6 +5,7 @@ import { formatDay, formatShortDate } from './format';
 import { SPECIES, matchesSearch, speciesForBirdnet, usuallyFlowering } from '../data/species';
 import { birdnetWeek } from '../birdnet/protocol';
 import { encodeWav, resample } from './wav';
+import { parseForecast, weatherIcon, weatherWords } from './weather';
 import { monthGuide } from '../data/seasons';
 import type { FieldRecord } from '../db';
 
@@ -97,6 +98,30 @@ describe('bird sounds', () => {
     expect(speciesForBirdnet('Nectarinia famosa', 'Malachite Sunbird', 'Jangroentjie').id).toBe('malachite-sunbird');
     const added = speciesForBirdnet('Cisticola subruficapilla', 'Grey-backed Cisticola', 'Grysrugtinktinkie');
     expect(added).toMatchObject({ id: 'bn-cisticola-subruficapilla', group: 'birds' });
+  });
+});
+
+describe('weather', () => {
+  const entry = (time: string, temp: number, extra: object = {}) => ({ time, data: { instant: { details: { air_temperature: temp, wind_speed: 5 } }, ...extra } });
+  it('reads the current weather and daily highs and lows from a MET forecast', () => {
+    const f = parseForecast({
+      properties: {
+        timeseries: [
+          entry('2026-09-24T08:00:00Z', 14.4, { next_1_hours: { summary: { symbol_code: 'partlycloudy_day' }, details: { precipitation_amount: 0.2 } }, next_6_hours: { summary: { symbol_code: 'rain' }, details: { precipitation_amount: 1.5 } } }),
+          entry('2026-09-24T09:00:00Z', 18, { next_1_hours: { summary: { symbol_code: 'cloudy' }, details: { precipitation_amount: 0.3 } } }),
+          entry('2026-09-24T10:00:00Z', 22.6, { next_1_hours: { summary: { symbol_code: 'clearsky_day' }, details: { precipitation_amount: 0 } } }),
+        ],
+      },
+    }, 1000)!;
+    expect(f.now).toEqual({ temp: 14, windKmh: 18, symbol: 'partlycloudy_day', rainNext6h: 1.5 });
+    expect(f.days[0]).toMatchObject({ min: 14, max: 23, rain: 0.5 });
+  });
+  it('turns Yr symbol codes into words and icons', () => {
+    expect(weatherWords('partlycloudy_day')).toBe('Partly cloudy');
+    expect(weatherWords('lightrainshowers_night')).toBe('Light rain showers');
+    expect(weatherWords('heavyrainandthunder')).toBe('Heavy rain and thunder');
+    expect(weatherIcon('clearsky_night')).toBe('moon');
+    expect(weatherIcon('rainshowersandthunder_day')).toBe('storm');
   });
 });
 

@@ -95,8 +95,8 @@ export const SPECIES: Species[] = [
   { id: 'african-wildcat', group: 'predators', en: 'African wildcat', af: 'Vaalboskat', sci: 'Felis lybica' },
   { id: 'black-backed-jackal', group: 'predators', en: 'Black-backed jackal', af: 'Rooijakkals', sci: 'Lupulella mesomelas' },
   { id: 'cape-fox', group: 'predators', en: 'Cape fox', af: 'Silwervos', sci: 'Vulpes chama' },
-  { id: 'bat-eared-fox', group: 'predators', en: 'Bat-eared fox', af: 'Bakoorjakkals', sci: 'Otocyon megalotis' },
-  { id: 'aardwolf', group: 'predators', en: 'Aardwolf', af: 'Aardwolf', sci: 'Proteles cristatus' },
+  { id: 'bat-eared-fox', group: 'small', en: 'Bat-eared fox', af: 'Bakoorjakkals', sci: 'Otocyon megalotis' },
+  { id: 'aardwolf', group: 'small', en: 'Aardwolf', af: 'Aardwolf', sci: 'Proteles cristatus' },
   { id: 'honey-badger', group: 'predators', en: 'Honey badger', af: 'Ratel', sci: 'Mellivora capensis' },
   { id: 'unknown-predator', group: 'predators', en: 'Unknown predator', af: 'Onbekende roofdier', unknown: true },
 

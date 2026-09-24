@@ -7,6 +7,7 @@ import { Empty, GroupAvatar, TopBar } from '../components/ui';
 import { useRecords } from '../db';
 import { GROUPS, getSpecies } from '../data/species';
 import { MONTHS } from '../data/seasons';
+import { speciesInfo, speciesPhoto } from '../data/speciesInfo';
 import { formatDay } from '../lib/format';
 import { speciesSummary } from '../lib/records';
 import { href } from '../lib/router';
@@ -20,6 +21,8 @@ export function SpeciesDetail({ id }: { id: string }) {
 
   if (!species) return <NotFound />;
   const group = GROUPS[species.group];
+  const info = speciesInfo(species.id);
+  const photo = speciesPhoto(species.id);
   const isPlant = species.group === 'plants';
   const photos = mine.flatMap((r) => r.photoIds ?? []).slice(0, 12);
   const clips = mine.filter((r) => r.clipId).slice(0, 5);
@@ -29,21 +32,62 @@ export function SpeciesDetail({ id }: { id: string }) {
   return (
     <>
       <TopBar title={species.en} subtitle={group.label} backTo="species" />
-      <section className="species-hero card">
-        <GroupAvatar group={species.group} size={64} />
-        <div>
-          <h2>{species.en}</h2>
-          <span className="muted">
-            {species.af}
-            {species.sci && (
+      {photo ? (
+        <figure className="species-photo">
+          <img src={photo} alt={species.en} />
+          <figcaption>
+            <div>
+              <h2>{species.en}</h2>
+              <span>
+                {species.af}
+                {species.sci && (
+                  <>
+                    {' · '}
+                    <i>{species.sci}</i>
+                  </>
+                )}
+              </span>
+            </div>
+          </figcaption>
+        </figure>
+      ) : (
+        <section className="species-hero card">
+          <GroupAvatar group={species.group} size={64} />
+          <div>
+            <h2>{species.en}</h2>
+            <span className="muted">
+              {species.af}
+              {species.sci && (
+                <>
+                  {' · '}
+                  <i>{species.sci}</i>
+                </>
+              )}
+            </span>
+          </div>
+        </section>
+      )}
+
+      {info && (
+        <section className="card species-about">
+          <h3>About</h3>
+          <p>{info.extract}</p>
+          <p className="species-about__credit">
+            <a href={info.url} target="_blank" rel="noreferrer">
+              Read more on Wikipedia
+            </a>
+            {info.photo && (
               <>
-                {' · '}
-                <i>{species.sci}</i>
+                {' · Photo: '}
+                <a href={info.photo.source} target="_blank" rel="noreferrer">
+                  {info.photo.credit}
+                </a>
+                {`, ${info.photo.licence}`}
               </>
             )}
-          </span>
-        </div>
-      </section>
+          </p>
+        </section>
+      )}
 
       <div className="stats">
         <div className="stat card">

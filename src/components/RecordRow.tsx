@@ -1,6 +1,7 @@
 import { Icon } from './Icon';
 import { PersonAvatar } from './PersonAvatar';
-import { Avatar } from './ui';
+import { Avatar, SpeciesThumb } from './ui';
+import { speciesPhoto } from '../data/speciesInfo';
 import type { FieldRecord } from '../db';
 import { getSpecies } from '../data/species';
 import { formatDay } from '../lib/format';
@@ -14,7 +15,7 @@ export function RecordRow({ record, showDay = false }: { record: FieldRecord; sh
   const content = (
     <>
       <span className="list-row__icon">
-        <Avatar icon={style.icon} colour={style.colour} tint={style.tint} />
+        {species && speciesPhoto(species.id, true) ? <SpeciesThumb species={species} /> : <Avatar icon={style.icon} colour={style.colour} tint={style.tint} />}
         {record.by && record.by !== 'Unknown' && (
           <span className="list-row__who">
             <PersonAvatar name={record.by} size={20} />

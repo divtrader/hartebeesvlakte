@@ -3,7 +3,7 @@ import { Icon } from '../components/Icon';
 import { PersonAvatar } from '../components/PersonAvatar';
 import { PlaceCard } from '../components/PlaceCard';
 import { PhotoStrip } from '../components/PhotoStrip';
-import { ActionBar, GroupAvatar, TopBar } from '../components/ui';
+import { ActionBar, SpeciesThumb, TopBar } from '../components/ui';
 import { db, saveRecords, useRecords } from '../db';
 import { ANIMAL_GROUPS, GROUPS, matchesSearch, speciesInGroups, type Group, type Species } from '../data/species';
 import { useFieldContext } from '../lib/fieldContext';
@@ -48,7 +48,7 @@ export function countDraftTotal(): number {
 function TallyRow({ species, n, onChange }: { species: Species; n: number; onChange: (delta: number) => void }) {
   return (
     <div className="tally__row">
-      <GroupAvatar group={species.group} />
+      <SpeciesThumb species={species} size={46} />
       <span className="list-row__text">
         <span className="list-row__title">{species.en}</span>
         <span className="list-row__meta">{species.af}</span>

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Icon } from './Icon';
-import { GroupAvatar } from './ui';
+import { SpeciesThumb } from './ui';
 import { getSpecies, matchesSearch, speciesInGroups, type Group, type Species } from '../data/species';
 
 interface Props {
@@ -29,7 +29,7 @@ export function SpeciesPicker({ groups, value, onChange, usage, colour }: Props)
   if (selected && !open) {
     return (
       <div className="picked card" style={{ borderColor: colour }}>
-        <GroupAvatar group={selected.group} />
+        <SpeciesThumb species={selected} size={44} />
         <div className="picked__text">
           <strong>{selected.en}</strong>
           <span>
@@ -78,7 +78,7 @@ export function SpeciesPicker({ groups, value, onChange, usage, colour }: Props)
               setQuery('');
             }}
           >
-            <GroupAvatar group={s.group} size={36} />
+            <SpeciesThumb species={s} size={40} />
             <span className="list-row__text">
               <span className="list-row__title">{s.en}</span>
               <span className="list-row__meta">{s.af}</span>

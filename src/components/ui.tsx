@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { Icon } from './Icon';
 import type { IconName } from './icons';
-import { GROUPS, type Group } from '../data/species';
+import { GROUPS, type Group, type Species } from '../data/species';
+import { speciesPhoto } from '../data/speciesInfo';
 
 export function TopBar({ title, subtitle, backTo = '', right }: { title: string; subtitle?: string; backTo?: string; right?: ReactNode }) {
   return (
@@ -29,6 +30,17 @@ export function Avatar({ icon, colour, tint, size = 40 }: { icon: IconName; colo
 export function GroupAvatar({ group, size }: { group: Group; size?: number }) {
   const g = GROUPS[group];
   return <Avatar icon={g.icon} colour={g.colour} tint={g.tint} size={size} />;
+}
+
+/** Round photo of the species, so it is easy to recognise; the group icon when there is no photo. */
+export function SpeciesThumb({ species, size = 40 }: { species: Species; size?: number }) {
+  const photo = speciesPhoto(species.id, true);
+  if (!photo) return <GroupAvatar group={species.group} size={size} />;
+  return (
+    <span className="thumb" style={{ width: size, height: size, borderColor: GROUPS[species.group].tint }}>
+      <img src={photo} alt="" loading="lazy" draggable={false} />
+    </span>
+  );
 }
 
 export function Chips<T extends string>({

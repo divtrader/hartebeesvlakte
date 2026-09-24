@@ -4,6 +4,7 @@ import { Logo } from '../components/Logo';
 import { FlowerMark } from '../components/FlowerMark';
 import { PersonAvatar } from '../components/PersonAvatar';
 import { RecordRow } from '../components/RecordRow';
+import { WeatherCard } from '../components/WeatherCard';
 import { Empty } from '../components/ui';
 import type { IconName } from '../components/icons';
 import { setSetting, useRecords, useSetting, type FieldRecord } from '../db';
@@ -147,6 +148,7 @@ export function Today() {
       </header>
 
       <InstallHint />
+      <WeatherCard />
 
       {draftTotal > 0 && (
         <a className="card resume" href={href('count')}>
