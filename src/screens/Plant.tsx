@@ -11,7 +11,7 @@ import { usageBySpecies } from '../lib/records';
 import { go, routeParam } from '../lib/router';
 import { toast } from '../lib/toast';
 
-const FLORA = '#8E2A5E';
+export const FLORA = '#8E2A5E';
 
 const COLOURS: [string, string][] = [
   ['White', '#F7F3EA'],
@@ -22,6 +22,21 @@ const COLOURS: [string, string][] = [
   ['Red', '#C0392B'],
   ['Blue', '#3F6FB5'],
 ];
+
+/** Flower colour swatches; tapping the chosen colour again clears it. */
+export function FlowerColours({ value, onChange }: { value: string | undefined; onChange: (colour: string | undefined) => void }) {
+  return (
+    <Field label={`Flower colour${value ? ` · ${value}` : ''}`}>
+      <div className="swatches" role="group" aria-label="Flower colour">
+        {COLOURS.map(([name, hex]) => (
+          <button key={name} type="button" aria-label={name} aria-pressed={value === name} onClick={() => onChange(value === name ? undefined : name)}>
+            <span style={{ background: hex }} />
+          </button>
+        ))}
+      </div>
+    </Field>
+  );
+}
 
 export function Plant() {
   const ctx = useFieldContext();
@@ -83,23 +98,7 @@ export function Plant() {
       <Field label="How many plants?">
         <Chips label="How many" options={AMOUNTS} value={amount} onChange={setAmount} colour={FLORA} />
       </Field>
-      {stage === 'Flowering' && (
-        <Field label={`Flower colour${colour ? ` · ${colour}` : ''}`}>
-          <div className="swatches" role="group" aria-label="Flower colour">
-            {COLOURS.map(([name, hex]) => (
-              <button
-                key={name}
-                type="button"
-                aria-label={name}
-                aria-pressed={colour === name}
-                onClick={() => setColour(colour === name ? undefined : name)}
-              >
-                <span style={{ background: hex }} />
-              </button>
-            ))}
-          </div>
-        </Field>
-      )}
+      {stage === 'Flowering' && <FlowerColours value={colour} onChange={setColour} />}
       <PlaceCard gps={ctx.gps} retry={ctx.retry} camp={ctx.camp} camps={ctx.camps} onCamp={ctx.setCamp} />
       <div className="switch-row card">
         <span>

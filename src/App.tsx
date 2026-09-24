@@ -10,6 +10,7 @@ import { Listen } from './screens/Listen';
 import { NotFound } from './screens/NotFound';
 import { Plant } from './screens/Plant';
 import { Rain } from './screens/Rain';
+import { RecordDetail } from './screens/RecordDetail';
 import { Records } from './screens/Records';
 import { Seasons } from './screens/Seasons';
 import { Settings } from './screens/Settings';
@@ -23,7 +24,7 @@ import { Today } from './screens/Today';
 const MapScreen = lazy(() => import('./screens/MapScreen').then((m) => ({ default: m.MapScreen })));
 
 /** Screens for making a record hide the tab bar and show their own Save bar instead. */
-const FORMS = new Set(['count', 'sighting', 'plant', 'rain']);
+const FORMS = new Set(['count', 'sighting', 'plant', 'rain', 'record']);
 
 function Screen({ page, rest }: { page: string; rest: string[] }) {
   switch (page) {
@@ -51,6 +52,8 @@ function Screen({ page, rest }: { page: string; rest: string[] }) {
       return <Seasons />;
     case 'records':
       return <Records />;
+    case 'record':
+      return rest[0] ? <RecordDetail id={rest[0]} /> : <Records />;
     case 'settings':
       return <Settings />;
     default:

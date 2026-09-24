@@ -1,13 +1,10 @@
 import { useMemo, useState } from 'react';
 import { ClipPlayer } from '../components/ClipPlayer';
-import { Icon } from '../components/Icon';
 import { PhotoRow } from '../components/PhotoStrip';
 import { RecordRow } from '../components/RecordRow';
 import { Empty } from '../components/ui';
-import { deleteRecord, useRecords, type FieldRecord, type Kind } from '../db';
+import { useRecords, type FieldRecord, type Kind } from '../db';
 import { formatDay, plural } from '../lib/format';
-import { recordTitle } from '../lib/records';
-import { toast } from '../lib/toast';
 
 type Filter = Kind | 'all';
 
@@ -34,12 +31,6 @@ export function Records() {
     return groups;
   }, [records, filter]);
 
-  async function remove(r: FieldRecord) {
-    if (!window.confirm(`Delete this record: ${recordTitle(r)}? This cannot be undone.`)) return;
-    await deleteRecord(r.id);
-    toast('Record deleted');
-  }
-
   const total = records?.length ?? 0;
 
   return (
@@ -62,12 +53,7 @@ export function Records() {
             <div className="card row-list">
               {items.map((r) => (
                 <div key={r.id} className="record-line">
-                  <div className="record-line__main">
-                    <RecordRow record={r} />
-                    <button type="button" className="icon-btn icon-btn--plain" aria-label={`Delete ${recordTitle(r)}`} onClick={() => remove(r)}>
-                      <Icon name="trash" size={18} />
-                    </button>
-                  </div>
+                  <RecordRow record={r} />
                   {(r.note || r.photoIds?.length || r.clipId) && (
                     <div className="record-line__extra">
                       {r.note && <p>{r.note}</p>}

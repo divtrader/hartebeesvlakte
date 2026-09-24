@@ -33,3 +33,13 @@ export function go(path: string): void {
 export function href(path: string): string {
   return `#/${path.replace(/^\//, '')}`;
 }
+
+// Counts moves within the app, so Back only steps back in history when there is somewhere in the app to go back to.
+let moves = 0;
+window.addEventListener('hashchange', () => (moves += 1));
+
+/** Back to the previous screen, such as Today or a species page; `fallback` when the app was opened on this screen. */
+export function goBack(fallback = ''): void {
+  if (moves > 0) window.history.back();
+  else go(fallback);
+}

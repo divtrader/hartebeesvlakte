@@ -4,10 +4,32 @@ import type { IconName } from './icons';
 import { GROUPS, type Group, type Species } from '../data/species';
 import { useSpeciesMedia } from '../lib/speciesMedia';
 
-export function TopBar({ title, subtitle, backTo = '', right }: { title: string; subtitle?: string; backTo?: string; right?: ReactNode }) {
+export function TopBar({
+  title,
+  subtitle,
+  backTo = '',
+  onBack,
+  right,
+}: {
+  title: string;
+  subtitle?: string;
+  backTo?: string;
+  /** Replaces the Back link, for screens that can be opened from several places. */
+  onBack?: () => void;
+  right?: ReactNode;
+}) {
   return (
     <header className="topbar">
-      <a className="icon-btn" href={`#/${backTo}`} aria-label="Back">
+      <a
+        className="icon-btn"
+        href={`#/${backTo}`}
+        aria-label="Back"
+        onClick={(e) => {
+          if (!onBack) return;
+          e.preventDefault();
+          onBack();
+        }}
+      >
         <Icon name="back" />
       </a>
       <div className="topbar__title">
@@ -40,6 +62,29 @@ export function SpeciesThumb({ species, size = 40 }: { species: Species; size?: 
     <span className="thumb" style={{ width: size, height: size, borderColor: GROUPS[species.group].tint }}>
       <img src={photo} alt="" loading="lazy" draggable={false} />
     </span>
+  );
+}
+
+/** Big minus and plus buttons around a number that can also be typed. Never goes below 1. */
+export function Stepper({ value, onChange, label }: { value: number; onChange: (value: number) => void; label: string }) {
+  return (
+    <div className="stepper">
+      <button type="button" className="tally__minus" aria-label="One less" disabled={value <= 1} onClick={() => onChange(Math.max(1, value - 1))}>
+        <Icon name="minus" size={20} strokeWidth={2.2} />
+      </button>
+      <input
+        type="number"
+        inputMode="numeric"
+        min={1}
+        className="stepper__n"
+        aria-label={label}
+        value={value}
+        onChange={(e) => onChange(Math.max(1, Math.floor(Number(e.target.value) || 1)))}
+      />
+      <button type="button" className="tally__plus" aria-label="One more" onClick={() => onChange(value + 1)}>
+        <Icon name="plus" size={22} strokeWidth={2.4} />
+      </button>
+    </div>
   );
 }
 

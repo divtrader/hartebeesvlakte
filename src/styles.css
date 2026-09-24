@@ -1525,6 +1525,7 @@ button.list-row:hover {
 /* Species */
 
 .thumb {
+  display: block;
   flex-shrink: 0;
   border-radius: 50%;
   border: 2px solid;
@@ -1850,15 +1851,104 @@ button.list-row:hover {
   color: var(--muted);
 }
 
-.record-line__main {
+/* One record, opened from a list */
+
+.record-who {
   display: flex;
   align-items: center;
-  padding-right: 6px;
+  gap: 12px;
+  padding: 10px 14px;
 }
 
-.record-line__main .list-row {
-  flex: 1;
+.record-who > div {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+}
+
+.record-who strong {
+  font-size: 16px;
+}
+
+.record-who span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.record-who__nobody {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+a.picked {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.facts {
+  margin: 0;
+  padding: 4px 14px;
+}
+
+.facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.facts > div:last-child {
+  border-bottom: 0;
+}
+
+.facts dt {
+  color: var(--muted);
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+.facts:not(:has(div)) {
+  display: none;
+}
+
+.record-note {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.record-owner {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--line-soft);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.input--select {
+  appearance: none;
+  -webkit-appearance: none;
+  font-weight: 600;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235c5446' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.btn--danger {
+  color: #a3321f;
+}
+
+.record-delete {
+  align-self: center;
 }
 
 .record-line__extra {

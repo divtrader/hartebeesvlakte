@@ -3,7 +3,7 @@ import { Icon } from '../components/Icon';
 import { PlaceCard } from '../components/PlaceCard';
 import { PhotoStrip } from '../components/PhotoStrip';
 import { SpeciesPicker } from '../components/SpeciesPicker';
-import { ActionBar, Field, TopBar } from '../components/ui';
+import { ActionBar, Field, Stepper, TopBar } from '../components/ui';
 import { saveRecords, uid, useRecords } from '../db';
 import { ANIMAL_GROUPS, getSpecies } from '../data/species';
 import { useFieldContext, useFormPhotos } from '../lib/fieldContext';
@@ -58,23 +58,7 @@ export function Sighting() {
         <SpeciesPicker groups={ANIMAL_GROUPS} value={speciesId} onChange={setSpeciesId} usage={usage} colour="#A94A24" />
       </Field>
       <Field label="How many?">
-        <div className="stepper">
-          <button type="button" className="tally__minus" aria-label="One less" disabled={n <= 1} onClick={() => setN((v) => Math.max(1, v - 1))}>
-            <Icon name="minus" size={20} strokeWidth={2.2} />
-          </button>
-          <input
-            type="number"
-            inputMode="numeric"
-            min={1}
-            className="stepper__n"
-            aria-label="Number of animals"
-            value={n}
-            onChange={(e) => setN(Math.max(1, Math.floor(Number(e.target.value) || 1)))}
-          />
-          <button type="button" className="tally__plus" aria-label="One more" onClick={() => setN((v) => v + 1)}>
-            <Icon name="plus" size={22} strokeWidth={2.4} />
-          </button>
-        </div>
+        <Stepper value={n} onChange={setN} label="Number of animals" />
       </Field>
       <Field label="Photos">
         <PhotoStrip ids={photoIds} onChange={setPhotoIds} />

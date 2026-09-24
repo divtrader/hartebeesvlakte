@@ -30,11 +30,10 @@ export function RecordRow({ record, showDay = false }: { record: FieldRecord; sh
       <span className={`list-row__value${record.kind === 'plant' ? ' list-row__value--text' : ''}`}>{recordValue(record)}</span>
     </>
   );
-  return species ? (
-    <a className="list-row" href={href(`species/${species.id}`)}>
+  // Opens the record, where the person who made it can correct it.
+  return (
+    <a className="list-row" href={href(`record/${record.id}`)}>
       {content}
     </a>
-  ) : (
-    <div className="list-row">{content}</div>
   );
 }

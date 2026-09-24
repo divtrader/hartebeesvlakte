@@ -20,6 +20,7 @@ It then opens full screen like an app and works without signal. Records are save
 - **Bird sounds:** listens through the microphone and names birds from their calls with BirdNET, filtered to the species expected at the farm in the current week. The 3 second recording is saved with the record so it can be checked later. The 60 MB model downloads once on request, then works without signal.
 - **First start:** a short setup asks who you are (tap your face), asks for location, and helps put the app on the home screen.
 - **Family faces:** the family is fixed; each record shows who made it. The portraits are added when the app is published, from a secret gist named in the `FAMILY_GIST_ID` repository secret. They are not part of this public code.
+- **Fixing a record:** tap any record to open it. The person who made it can change the count, species, camp or note (stage and colour for plants, millimetres and day for rain), or delete it. Everyone else sees it read only.
 - **Map:** satellite map of the farm with every record that has a GPS position.
 - **Species book:** a photo and a short description for every species, English and Afrikaans names, records per month and when each plant was seen flowering. Photos and text come from Wikipedia and Wikimedia Commons (credited on each species page); refresh them with `npm run species`.
 - **Weather:** the Yr forecast for Toit's Dam (MET Norway data), the location the farm uses on yr.no. The last forecast stays on the phone when there is no signal.
