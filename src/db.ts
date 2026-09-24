@@ -53,6 +53,17 @@ export interface PhotoRow {
 
 export type ClipRow = PhotoRow;
 
+/** Photo and summary fetched from Wikipedia for a species that is not on the starter list (birds heard by BirdNET). */
+export interface FetchedInfo {
+  id: string;
+  title?: string;
+  url?: string;
+  extract?: string;
+  photo?: { credit: string; licence: string; licenceUrl?: string; source: string };
+  image?: Blob;
+  fetchedAt: number;
+}
+
 /** A family member or staff member, with their avatar from the private family file. */
 export interface PersonRow {
   name: string;
@@ -75,6 +86,7 @@ class VeldboekDB extends Dexie {
   species!: EntityTable<Species, 'id'>;
   /** Avatars; never part of the public code, loaded from the family file. */
   people!: EntityTable<PersonRow, 'name'>;
+  speciesInfo!: EntityTable<FetchedInfo, 'id'>;
 
   constructor() {
     super('veldboek');
@@ -89,6 +101,9 @@ class VeldboekDB extends Dexie {
     });
     this.version(3).stores({
       people: 'name',
+    });
+    this.version(4).stores({
+      speciesInfo: 'id',
     });
   }
 }

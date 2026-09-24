@@ -7,8 +7,9 @@ import sharp from 'sharp';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { SPECIES } from '../src/data/species.ts';
+import { USER_AGENT, commonsFileName, imageInfoUrl, readImageInfo, shortenExtract, summaryUrl } from '../src/lib/wiki.ts';
 
-const HEADERS = { 'User-Agent': 'HartebeesvlakteVeldboek/0.1 (https://github.com/divtrader/hartebeesvlakte)' };
+const HEADERS = { 'User-Agent': USER_AGENT };
 const OUT_PHOTOS = new URL('../public/species/', import.meta.url);
 const OUT_INFO = new URL('../src/data/species-info.json', import.meta.url);
 
@@ -53,52 +54,15 @@ async function json(url: string) {
 }
 
 async function summary(title: string) {
-  const data = await json(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`);
+  const data = await json(summaryUrl(title));
   return data?.type === 'standard' && data.extract ? data : undefined;
 }
 
-/** First few sentences, at most about 360 characters. */
-function shorten(text: string): string {
-  const sentences = text.replace(/\s+/g, ' ').match(/[^.!?]+(?:[.!?](?=\s|$)|$)/g) ?? [text];
-  let out = '';
-  for (const s of sentences) {
-    if (out && (out + s).length > 360) break;
-    out += s;
-  }
-  return out.trim();
-}
-
-function plain(html: string | undefined): string {
-  return (html ?? '')
-    .replace(/<[^>]*>/g, '')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#0?39;/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
 async function commonsPhoto(originalUrl: string) {
-  // Only files on Wikimedia Commons are freely licensed; local Wikipedia files may be fair use.
-  const match = originalUrl.match(/(?:upload|thumb)\.wikimedia\.org\/wikipedia\/commons\/(?:thumb\/)?[0-9a-f]\/[0-9a-f]{2}\/([^/?#]+)/);
-  if (!match) return undefined;
-  const file = decodeURIComponent(match[1]);
-  const data = await json(
-    `https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=960&titles=${encodeURIComponent(`File:${file}`)}`,
-  );
-  const page = data && (Object.values(data.query.pages)[0] as { imageinfo?: { thumburl: string; descriptionurl: string; extmetadata: Record<string, { value: string }> }[] });
-  const info = page?.imageinfo?.[0];
-  if (!info) return undefined;
-  const meta = info.extmetadata;
-  const licence = plain(meta.LicenseShortName?.value) || 'see source';
-  if (/fair use|non-free/i.test(licence)) return undefined;
-  return {
-    thumb: info.thumburl,
-    credit: plain(meta.Artist?.value) || 'Unknown photographer',
-    licence,
-    licenceUrl: meta.LicenseUrl?.value,
-    source: info.descriptionurl,
-  };
+  const file = commonsFileName(originalUrl);
+  if (!file) return undefined;
+  const found = readImageInfo(await json(imageInfoUrl(file, 960)));
+  return found && { thumb: found.thumb, ...found.photo };
 }
 
 await mkdir(OUT_PHOTOS, { recursive: true });
@@ -118,7 +82,7 @@ for (const s of SPECIES) {
     missing.push(`${s.id} (no article)`);
     continue;
   }
-  const info: Info = { title: page.title, url: page.content_urls?.desktop?.page, extract: shorten(page.extract) };
+  const info: Info = { title: page.title, url: page.content_urls?.desktop?.page, extract: shortenExtract(page.extract) };
   const photo = page.originalimage?.source ? await commonsPhoto(page.originalimage.source) : undefined;
   if (photo) {
     const image = await get(photo.thumb);

@@ -7,7 +7,7 @@ import { Empty, GroupAvatar, TopBar } from '../components/ui';
 import { useRecords } from '../db';
 import { GROUPS, getSpecies } from '../data/species';
 import { MONTHS } from '../data/seasons';
-import { speciesInfo, speciesPhoto } from '../data/speciesInfo';
+import { useSpeciesMedia } from '../lib/speciesMedia';
 import { formatDay } from '../lib/format';
 import { speciesSummary } from '../lib/records';
 import { href } from '../lib/router';
@@ -18,11 +18,11 @@ export function SpeciesDetail({ id }: { id: string }) {
   const records = useRecords();
   const mine = useMemo(() => (records ?? []).filter((r) => r.speciesId === id), [records, id]);
   const summary = useMemo(() => speciesSummary(mine, id), [mine, id]);
+  const { info, photo } = useSpeciesMedia(species);
 
   if (!species) return <NotFound />;
   const group = GROUPS[species.group];
-  const info = speciesInfo(species.id);
-  const photo = speciesPhoto(species.id);
+
   const isPlant = species.group === 'plants';
   const photos = mine.flatMap((r) => r.photoIds ?? []).slice(0, 12);
   const clips = mine.filter((r) => r.clipId).slice(0, 5);

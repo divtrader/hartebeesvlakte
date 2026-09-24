@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '../components/Icon';
-import { Chips, GroupAvatar, TopBar } from '../components/ui';
+import { Chips, SpeciesThumb, TopBar } from '../components/ui';
 import { db, saveRecords, uid } from '../db';
 import { FARM } from '../data/farm';
 import { getSpecies, registerSpecies, speciesForBirdnet } from '../data/species';
@@ -305,7 +305,7 @@ export function Listen() {
                 const species = speciesForBirdnet(d.sci, d.en, d.af);
                 return (
                   <div key={d.sci} className="heard">
-                    <GroupAvatar group="birds" />
+                    <SpeciesThumb species={species} size={48} />
                     <div className="heard__text">
                       <strong>{species.en}</strong>
                       <span>{species.af !== species.en ? species.af : <i>{d.sci}</i>}</span>

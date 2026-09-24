@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import { Icon } from './Icon';
 import type { IconName } from './icons';
 import { GROUPS, type Group, type Species } from '../data/species';
-import { speciesPhoto } from '../data/speciesInfo';
+import { useSpeciesMedia } from '../lib/speciesMedia';
 
 export function TopBar({ title, subtitle, backTo = '', right }: { title: string; subtitle?: string; backTo?: string; right?: ReactNode }) {
   return (
@@ -34,7 +34,7 @@ export function GroupAvatar({ group, size }: { group: Group; size?: number }) {
 
 /** Round photo of the species, so it is easy to recognise; the group icon when there is no photo. */
 export function SpeciesThumb({ species, size = 40 }: { species: Species; size?: number }) {
-  const photo = speciesPhoto(species.id, true);
+  const photo = useSpeciesMedia(species).small;
   if (!photo) return <GroupAvatar group={species.group} size={size} />;
   return (
     <span className="thumb" style={{ width: size, height: size, borderColor: GROUPS[species.group].tint }}>
